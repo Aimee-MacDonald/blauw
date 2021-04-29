@@ -9,9 +9,14 @@ const Navigation = () => (
 
 const StyledNavigation = styled.nav`
   background-color: yellow;
-  width: 16rem;
+  width: 0.1rem;
   height: 100vh;
   overflow-x: hidden;
+  transition: 0.2s;
+
+  &:hover{
+    width: 16rem;
+  }
 `
 
 export default Navigation

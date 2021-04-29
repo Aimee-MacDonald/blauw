@@ -9,9 +9,14 @@ const Toolbox = () => (
 
 const StyledToolbox = styled.nav`
   background-color: lightblue;
-  width: 16rem;
+  width: 0.1rem;
   height: 100vh;
   overflow-x: hidden;
+  transition: 0.2s;
+
+  &:hover{
+    width: 16rem;
+  }
 `
 
 export default Toolbox

@@ -6,7 +6,7 @@ app.once('ready', () => {
     height: 600
   })
 
-  window.setMenu(null)
+  //window.setMenu(null)
   window.maximize()
   window.loadFile('main.html')
 })
