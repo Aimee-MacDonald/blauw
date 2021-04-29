@@ -2,13 +2,13 @@ import React from 'react'
 import styled from 'styled-components'
 
 const MainLayer = () => (
-  <StyledMainLayer as='div'>
+  <StyledMainLayer>
     <h1>Main Layer</h1>
   </StyledMainLayer>
 )
 
-const StyledMainLayer = styled.section`
-  background-color: red;
+const StyledMainLayer = styled.div`
+  background-color: purple;
   position: fixed;
   z-index: 0;
   width: 100%;
