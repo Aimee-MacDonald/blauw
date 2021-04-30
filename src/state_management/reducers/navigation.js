@@ -1,10 +1,6 @@
 const defaultState = {
-  bookingSheet: {
-    open: false
-  },
-  checkout: {
-    open: false
-  }
+  bookingSheet: false,
+  checkout: false
 }
 
 export default (state = defaultState, {type, main}) => {
@@ -14,20 +10,16 @@ export default (state = defaultState, {type, main}) => {
         case 'bookingSheet':
           return{
             ...defaultState,
-            bookingSheet: {
-              open: true
-            }
+            bookingSheet: true
           }
 
         case 'checkout':
           return{
             ...defaultState,
-            checkout: {
-              open: true
-            }
+            checkout: true
           }
       }
-
+      
     default:
       return state
   }

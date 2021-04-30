@@ -1,12 +1,12 @@
 import {createStore, combineReducers} from 'redux'
 
 import controlsReducer from './reducers/controls'
-import mainsReducer from './reducers/mains'
+import navigationReducer from './reducers/navigation'
 
 export default () => {
   const store = createStore(combineReducers({
     controls: controlsReducer,
-    mains: mainsReducer
+    navigation: navigationReducer
   }))
   
   return store

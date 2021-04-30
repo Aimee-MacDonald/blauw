@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import {connect} from 'react-redux';
 
 import {toggleControl} from '../../state_management/actions/controls'
-import {setMain} from '../../state_management/actions/mains'
+import {setMain} from '../../state_management/actions/navigation'
 
 const Navigation = props => (
   <StyledNavigation {...props}

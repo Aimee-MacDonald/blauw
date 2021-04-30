@@ -7,8 +7,8 @@ import Checkout from './mains/Checkout'
 
 const MainLayer = props => (
   <StyledMainLayer>
-    {props.bookingSheet.open && <BookingSheet/>}
-    {props.checkout.open && <Checkout/>}
+    {props.bookingSheet && <BookingSheet/>}
+    {props.checkout && <Checkout/>}
   </StyledMainLayer>
 )
 
@@ -20,9 +20,8 @@ const StyledMainLayer = styled.div`
   height: 100%;
 `
 
-const mapStateToProps = ({mains}) => ({
-  bookingSheet: mains.bookingSheet,
-  checkout: mains.checkout
+const mapStateToProps = ({navigation}) => ({
+  ...navigation
 })
 
 export default connect(mapStateToProps)(MainLayer)
