@@ -1,9 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
+import {connect} from 'react-redux'
 
-const MainLayer = () => (
+import BookingSheet from './mains/BookingSheet'
+import Checkout from './mains/Checkout'
+
+const MainLayer = props => (
   <StyledMainLayer>
-    <h1>Main Layer</h1>
+    {props.bookingSheet.open && <BookingSheet/>}
+    {props.checkout.open && <Checkout/>}
   </StyledMainLayer>
 )
 
@@ -13,9 +18,11 @@ const StyledMainLayer = styled.div`
   z-index: 0;
   width: 100%;
   height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `
 
-export default MainLayer
+const mapStateToProps = ({mains}) => ({
+  bookingSheet: mains.bookingSheet,
+  checkout: mains.checkout
+})
+
+export default connect(mapStateToProps)(MainLayer)
