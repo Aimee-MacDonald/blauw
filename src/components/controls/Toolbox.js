@@ -1,10 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
+import {connect} from 'react-redux'
+import {toggleControl} from '../../state_management/actions/controls'
 
 const Toolbox = props => (
   <StyledToolbox {...props}
-    onMouseEnter={props.toggleOpen}
-    onMouseLeave={props.toggleOpen}
+    onMouseEnter={() => props.dispatch(toggleControl('right'))}
+    onMouseLeave={() => props.dispatch(toggleControl('right'))}
   >
     {props.open && <h1>Toolbox</h1>}
   </StyledToolbox>
@@ -22,4 +24,8 @@ const StyledToolbox = styled.nav`
   box-shadow: ${props => props.open ? '-0.2rem 0 1rem 0 #248' : 0};
 `
 
-export default Toolbox
+const mapStateToProps = state => ({
+  open: state.controls.right.open
+})
+
+export default connect(mapStateToProps)(Toolbox)

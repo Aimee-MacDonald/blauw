@@ -1,10 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
+import {connect} from 'react-redux';
+import {toggleControl} from '../../state_management/actions/controls'
 
 const Navigation = props => (
   <StyledNavigation {...props}
-    onMouseEnter={props.toggleOpen}
-    onMouseLeave={props.toggleOpen}
+    onMouseEnter={() => props.dispatch(toggleControl('left'))}
+    onMouseLeave={() => props.dispatch(toggleControl('left'))}
   >
     {props.open && <h1>Navigation</h1>}
   </StyledNavigation>
@@ -22,4 +24,8 @@ const StyledNavigation = styled.nav`
   box-shadow: ${props => props.open ? '0.2rem 0 1rem 0 #248' : 0};
 `
 
-export default Navigation
+const mapStateToProps = state => ({
+  open: state.controls.left.open
+})
+
+export default connect(mapStateToProps)(Navigation)
