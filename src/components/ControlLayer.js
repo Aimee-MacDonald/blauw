@@ -4,20 +4,14 @@ import styled from 'styled-components'
 import Navigation from './controls/Navigation'
 import Toolbox from './controls/Toolbox'
 
-export default class ControlLayer extends React.Component{
-  constructor(props){
-    super(props)
-  }
+const ControlLayer = () => (
+  <StyledControlLayer>
+    <Navigation/>
+    <Toolbox/>
+  </StyledControlLayer>
+)
 
-  render(){
-    return(
-      <StyledControlLayer>
-        <Navigation/>
-        <Toolbox/>
-      </StyledControlLayer>
-    )
-  }
-}
+export default ControlLayer
 
 const StyledControlLayer = styled.div`
   position: fixed;
