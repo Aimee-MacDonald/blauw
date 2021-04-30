@@ -2,8 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Navigation = props => (
-  <StyledNavigation
-    open={props.open}
+  <StyledNavigation {...props}
     onMouseEnter={props.toggleOpen}
     onMouseLeave={props.toggleOpen}
   >

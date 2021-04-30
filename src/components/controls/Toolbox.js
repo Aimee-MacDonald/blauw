@@ -2,8 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Toolbox = props => (
-  <StyledToolbox
-    open={props.open}
+  <StyledToolbox {...props}
     onMouseEnter={props.toggleOpen}
     onMouseLeave={props.toggleOpen}
   >
