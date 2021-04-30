@@ -1,44 +1,11 @@
-import {createStore} from 'redux'
+import {createStore, combineReducers} from 'redux'
 
-const defaultState = {
-  controls: {
-    left: {
-      open: false
-    },
-    right: {
-      open: false
-    }
-  }
-}
+import controlsReducer from './reducers/controls'
 
 export default () => {
-  const store = createStore((state = defaultState, {type, orientation}) => {
-    switch(type){
-      case 'TOGGLE_CONTROL':
-        if(orientation === 'left'){
-          return {
-            controls: {
-              ...state.controls,
-              left: {
-                open: !state.controls.left.open
-              }
-            }
-          }
-        } else if(orientation === 'right'){
-          return {
-            controls: {
-              ...state.controls,
-              right: {
-                open: !state.controls.right.open
-              }
-            }
-          }
-        }
-        
-      default:
-        return state
-    }
-  })
+  const store = createStore(combineReducers({
+    controls: controlsReducer
+  }))
   
   return store
 }
