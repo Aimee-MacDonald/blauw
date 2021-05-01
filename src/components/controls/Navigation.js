@@ -12,6 +12,8 @@ const Navigation = props => (
   >
     {props.open && <button onClick={() => props.dispatch(setMain('bookingSheet'))}>Booking Sheet</button>}
     {props.open && <button onClick={() => props.dispatch(setMain('checkout'))}>Checkout</button>}
+    {props.open && <button onClick={() => props.dispatch(setMain('stock'))}>Stock</button>}
+    {props.open && <button onClick={() => props.dispatch(setMain('notes'))}>Notes</button>}
   </StyledNavigation>
 )
 

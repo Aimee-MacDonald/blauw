@@ -4,11 +4,15 @@ import {connect} from 'react-redux'
 
 import BookingSheet from './mains/BookingSheet'
 import Checkout from './mains/Checkout'
+import Stock from './mains/Stock'
+import Notes from './mains/Notes'
 
 const MainLayer = props => (
   <StyledMainLayer>
     {props.bookingSheet && <BookingSheet/>}
     {props.checkout && <Checkout/>}
+    {props.stock && <Stock/>}
+    {props.notes && <Notes />}
   </StyledMainLayer>
 )
 
