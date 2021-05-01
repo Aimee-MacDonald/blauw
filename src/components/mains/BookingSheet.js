@@ -1,9 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import Dates from './booking_sheet/Dates'
+
 const BookingSheet = () => (
   <StyledBookingSheet>
-    <h1>Booking Sheet</h1>
+    <Dates/>
   </StyledBookingSheet>
 )
 
