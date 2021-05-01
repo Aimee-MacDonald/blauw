@@ -37,8 +37,8 @@ export default class Dates extends React.Component{
     const focusDate = new Date()
     let visibleDates = []
 
-    dateObject.setDate(focusDate.getDate() - 15)
-    for(let i = 0; i < 30 ; i++){
+    dateObject.setDate(focusDate.getDate() - 14)
+    for(let i = 0; i < 29 ; i++){
       visibleDates.push(formatDate(dateObject))
       dateObject.setDate(dateObject.getDate() + 1)
     }
@@ -52,17 +52,21 @@ export default class Dates extends React.Component{
 }
 
 const StyledDates = styled.div`
+  display: flex;
+  flex-flow: nowrap column;
+  align-items: center;
+
   > ul{
     display: flex;
     flex-flow: nowrap row;
-    justify-content: space-around;
+    overflow-x: hidden
   }
 `
 
 const DateHeading = ({date, focusDate}) => (
   <StyledDateHeading selected={formatDate(focusDate).date === date.date ? true : false}>
     <p>{date.day}</p>
-    <p>{date.date}</p>
+    <h2>{date.date}</h2>
     <p>{date.month}</p>
   </StyledDateHeading>
 )
@@ -72,6 +76,7 @@ const StyledDateHeading = styled.div`
   flex-flow nowrap column;
   align-items: center;
   background-color: ${props => props.selected ? 'lightgreen' : 'pink'};
-  width: 100%;
-  padding: 0.4rem;
+  min-width: 6.4rem;
+  margin: 0 0.5px;
+  padding: 0.4rem 0;
 `

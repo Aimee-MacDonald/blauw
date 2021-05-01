@@ -10,7 +10,9 @@ const BookingSheet = () => (
 )
 
 const StyledBookingSheet = styled.div`
-  background-color: lightblue;
+  background-color: indigo;
+  width: 100%;
+  height: 100%;
 `
 
 export default BookingSheet
