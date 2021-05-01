@@ -29,6 +29,14 @@ const StyledNavigation = styled.nav`
   box-shadow: ${props => props.open ? '0.2rem 0 1rem 0 #248' : 0};
   display: flex;
   flex-flow: nowrap column;
+
+  > button{
+    background-color: yellow;
+    margin: 0.2rem;
+    padding: 0.4rem;
+    font-weight: bold;
+    font-size: 16pt;
+  }
 `
 
 const mapStateToProps = ({controls}) => ({
