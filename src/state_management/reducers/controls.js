@@ -10,19 +10,10 @@ const defaultState = {
 export default (state = defaultState, {type, orientation}) => {
   switch(type){
     case 'TOGGLE_CONTROL':
-      if(orientation === 'left'){
-        return{
-          ...state,
-          left: {
-            open: !state.left.open
-          }
-        }
-      } else if(orientation === 'right'){
-        return{
-          ...state,
-          right: {
-            open: !state.right.open
-          }
+      return{
+        ...state,
+        [orientation]: {
+          open: !state[orientation].open
         }
       }
 
