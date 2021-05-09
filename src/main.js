@@ -20,7 +20,7 @@ const MainComponent = () => (
         <GlobalStyle />
         <MainLayer />
         <ControlLayer />
-        <ModalLayer />
+        {/*<ModalLayer />*/}
       </StyledMainComponent>
     </ServerConnectionProvider>
   </Provider>
