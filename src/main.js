@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import {Provider} from 'react-redux'
 
 import createStore from './state_management/createStore'
+import ServerConnectionProvider from './util/ServerConnection'
 
 import GlobalStyle from './GlobalStyle'
 import MainLayer from './components/MainLayer'
@@ -14,12 +15,14 @@ const store = createStore()
 
 const MainComponent = () => (
   <Provider store={store}>
-    <StyledMainComponent as='div'>
-      <GlobalStyle />
-      <MainLayer />
-      <ControlLayer />
-      {/*<ModalLayer />*/}
-    </StyledMainComponent>
+    <ServerConnectionProvider>
+      <StyledMainComponent as='div'>
+        <GlobalStyle />
+        <MainLayer />
+        <ControlLayer />
+        <ModalLayer />
+      </StyledMainComponent>
+    </ServerConnectionProvider>
   </Provider>
 )
 
