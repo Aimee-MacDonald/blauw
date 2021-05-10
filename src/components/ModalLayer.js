@@ -1,24 +1,30 @@
 import React from 'react'
 import styled from 'styled-components'
+import {connect} from 'react-redux'
 
 import TempModal from './modals/TempModal'
 
-const ModalLayer = () => (
-  <StyledModalLayer as='div'>
+const ModalLayer = props => (
+  <StyledModalLayer {...props}>
     <TempModal />
   </StyledModalLayer>
 )
 
-const StyledModalLayer = styled.section`
+const StyledModalLayer = styled.div`
   background-color: blue;
   position: fixed;
   z-index: 2;
   width: 100%;
-  height: 100%;
+  height: ${props => props.modalActive ? '100%' : '0'};
   overflow: hidden;
+  transition: 0.4s;
   display: flex;
   justify-content: center;
   align-items: center;
 `
 
-export default ModalLayer
+const mapStateToProps = ({modal}) => ({
+  modalActive: !!modal.activeModal
+})
+
+export default connect(mapStateToProps)(ModalLayer)

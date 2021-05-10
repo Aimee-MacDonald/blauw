@@ -1,14 +1,18 @@
 import React from 'react'
 import styled from 'styled-components'
 import {connect} from 'react-redux'
+
 import {toggleControl} from '../../state_management/actions/controls'
+import {setModal} from '../../state_management/actions/modal'
 
 const Toolbox = props => (
   <StyledToolbox {...props}
     onMouseEnter={() => props.dispatch(toggleControl('right'))}
     onMouseLeave={() => props.dispatch(toggleControl('right'))}
   >
-    {props.open && <h1>Toolbox</h1>}
+    {props.open && (
+      props.navigation.bookingSheet && <button onClick={() => props.dispatch(setModal('createBooking'))}>Create Booking</button>
+    )}
   </StyledToolbox>
 )
 
@@ -24,8 +28,11 @@ const StyledToolbox = styled.nav`
   box-shadow: ${props => props.open ? '-0.2rem 0 1rem 0 #248' : 0};
 `
 
-const mapStateToProps = state => ({
-  open: state.controls.right.open
-})
+const mapStateToProps = ({controls, navigation}) => {
+  return{
+    open: controls.right.open,
+    navigation
+  }
+}
 
 export default connect(mapStateToProps)(Toolbox)

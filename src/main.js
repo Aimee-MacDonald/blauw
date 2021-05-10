@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import styled from 'styled-components'
 import {Provider} from 'react-redux'
+import {connect} from 'react-redux'
 
 import createStore from './state_management/createStore'
 import ServerConnectionProvider from './util/ServerConnection'
@@ -20,7 +21,7 @@ const MainComponent = () => (
         <GlobalStyle />
         <MainLayer />
         <ControlLayer />
-        {/*<ModalLayer />*/}
+        <ModalLayer />
       </StyledMainComponent>
     </ServerConnectionProvider>
   </Provider>
