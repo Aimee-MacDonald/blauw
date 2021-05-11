@@ -1,24 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
+import {connect} from 'react-redux'
 
-const Bookings = () => {
-  const bookings = [{
-    name: 'Charlene',
-    date: 20,
-    room: 4,
-    nights: 2
-  }, {
-    name: 'Aimée',
-    date: 20,
-    room: 5,
-    nights: 1
-  }, {
-    name: 'Tim',
-    date: 6,
-    room: 24,
-    nights: 5
-  }]
-
+const Bookings = ({bookings}) => {
   return(
     <StyledBookings>
       {bookings.map(booking => (
@@ -52,4 +36,6 @@ const StyledBooking = styled.div`
   margin: 0.1rem
 `
 
-export default Bookings
+const mapStateToProps = ({bookings}) => ({bookings})
+
+export default connect(mapStateToProps)(Bookings)
