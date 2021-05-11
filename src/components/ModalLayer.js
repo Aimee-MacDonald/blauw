@@ -3,10 +3,11 @@ import styled from 'styled-components'
 import {connect} from 'react-redux'
 
 import TempModal from './modals/TempModal'
+import CreateBooking from './modals/CreateBooking'
 
 const ModalLayer = props => (
   <StyledModalLayer {...props}>
-    <TempModal />
+    <CreateBooking />
   </StyledModalLayer>
 )
 
