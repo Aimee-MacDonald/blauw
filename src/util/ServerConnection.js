@@ -9,20 +9,24 @@ export default ({children}) => {
   let socket
   let connection
 
-  const test = () => {
-    console.log('Testing Context')
-    socket.emit('test', 'It works!')
+  const dispatch = ({reducer, action}) => {
+    socket.emit(reducer, action)
   }
 
   if(!socket){
     socket = io.connect('http://localhost:8080')
 
     socket.on('connect', () => console.log('Socket Connection!'))
-    socket.on('test', msg => console.log(msg))
+
+    socket.on('bookings', payload => {
+      // WTF am I going to do here??
+      console.log('Something about bookings?')
+      console.log(payload)
+    })
 
     connection = {
       socket: socket,
-      test
+      dispatch
     }
   }
 
