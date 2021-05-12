@@ -8,7 +8,7 @@ test('Navigate to main', () => {
     notes: false
   }
 
-  const action = {type: 'SET_MAIN', main: 'bookingSheet'}
+  const action = {type: 'SET_MAIN', payload: 'bookingSheet'}
   const result = navigationReducer(state, action)
   expect(result).toEqual({...state, bookingSheet: true})
 })

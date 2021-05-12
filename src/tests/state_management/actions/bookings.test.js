@@ -12,6 +12,6 @@ test(`Generate a 'create booking' action`, () => {
 
   expect(booking).toEqual({
     type: 'CREATE_BOOKING',
-    bookingData: {...bookingData}
+    payload: {...bookingData}
   })
 })

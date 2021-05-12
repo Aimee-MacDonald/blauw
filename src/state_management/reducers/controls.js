@@ -7,13 +7,13 @@ const defaultState = {
   }
 }
 
-export default (state = defaultState, {type, orientation}) => {
+export default (state = defaultState, {type, payload}) => {
   switch(type){
     case 'TOGGLE_CONTROL':
       return{
         ...state,
-        [orientation]: {
-          open: !state[orientation].open
+        [payload]: {
+          open: !state[payload].open
         }
       }
 

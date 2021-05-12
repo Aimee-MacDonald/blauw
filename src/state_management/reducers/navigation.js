@@ -5,12 +5,12 @@ const defaultState = {
   notes: false
 }
 
-export default (state = defaultState, {type, main}) => {
+export default (state = defaultState, {type, payload}) => {
   switch(type){
     case 'SET_MAIN':
       return{
         ...defaultState,
-        [main]: true
+        [payload]: true
       }
       
     default:

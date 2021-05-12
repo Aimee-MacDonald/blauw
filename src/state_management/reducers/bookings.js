@@ -1,7 +1,7 @@
-export default (state = [], {type, bookingData}) => {
+export default (state = [], {type, payload}) => {
   switch(type){
     case 'CREATE_BOOKING':
-      return [...state, bookingData]
+      return [...state, payload]
       
     default:
       return state

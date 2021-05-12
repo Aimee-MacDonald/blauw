@@ -1,7 +1,7 @@
 import bookingsReducer from '../../../state_management/reducers/bookings'
 
 test('Create a new booking', () => {
-  const bookingData = {
+  const payload = {
     name: 'name',
     date: '1',
     room: '2',
@@ -9,8 +9,8 @@ test('Create a new booking', () => {
   }
 
   const state = []
-  const action = {type: 'CREATE_BOOKING', bookingData}
+  const action = {type: 'CREATE_BOOKING', payload}
   const result = bookingsReducer(state, action)
 
-  expect(result).toEqual([bookingData])
+  expect(result).toEqual([payload])
 })

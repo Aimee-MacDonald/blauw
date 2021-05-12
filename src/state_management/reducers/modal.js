@@ -2,10 +2,10 @@ const defaultState = {
   activeModal: null
 }
 
-export default (state = defaultState, {type, modalName = null}) => {
+export default (state = defaultState, {type, payload = null}) => {
   switch(type){
     case 'SET_MODAL':
-      return {activeModal: modalName}
+      return {activeModal: payload}
 
     default:
       return state
