@@ -1,9 +1,7 @@
 import React, {createContext} from 'react'
 import io from 'socket.io-client'
 
-const ServerConnectionContext = createContext(null)
-
-export {ServerConnectionContext}
+import {store} from '../state_management/createStore'
 
 export default ({children}) => {
   let socket
@@ -15,14 +13,8 @@ export default ({children}) => {
 
   if(!socket){
     socket = io.connect('http://localhost:8080')
-
     socket.on('connect', () => console.log('Socket Connection!'))
-
-    socket.on('bookings', payload => {
-      // WTF am I going to do here??
-      console.log('Something about bookings?')
-      console.log(payload)
-    })
+    socket.on('dispatchAction', action => store.dispatch(action))
 
     connection = {
       socket: socket,
@@ -36,3 +28,6 @@ export default ({children}) => {
     </ServerConnectionContext.Provider>
   )
 }
+
+const ServerConnectionContext = createContext(null)
+export {ServerConnectionContext}

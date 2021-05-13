@@ -5,13 +5,11 @@ import navigationReducer from './reducers/navigation'
 import modalReducer from './reducers/modal'
 import bookingsReducer from './reducers/bookings'
 
-export default () => {
-  const store = createStore(combineReducers({
-    controls: controlsReducer,
-    navigation: navigationReducer,
-    modal: modalReducer,
-    bookings: bookingsReducer
-  }))
-  
-  return store
-}
+export const store = createStore(combineReducers({
+  controls: controlsReducer,
+  navigation: navigationReducer,
+  modal: modalReducer,
+  bookings: bookingsReducer
+}))
+ 
+export default () => store

@@ -5,12 +5,13 @@ import {connect} from 'react-redux'
 const Bookings = ({bookings}) => {
   return(
     <StyledBookings>
-      {bookings.map(booking => (
+      {bookings.map(({name, date, room, nights}) => (
         <StyledBooking
-          date={booking.date}
-          room={booking.room}
-          nights={booking.nights}
-        >{booking.name}</StyledBooking>))}
+          key={`d${date}r${room}`}
+          date={date}
+          room={room}
+          nights={nights}
+        >{name}</StyledBooking>))}
     </StyledBookings>
   )
 }
@@ -37,5 +38,4 @@ const StyledBooking = styled.div`
 `
 
 const mapStateToProps = ({bookings}) => ({bookings})
-
 export default connect(mapStateToProps)(Bookings)
