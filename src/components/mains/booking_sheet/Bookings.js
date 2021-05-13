@@ -5,9 +5,9 @@ import {connect} from 'react-redux'
 const Bookings = ({bookings}) => {
   return(
     <StyledBookings>
-      {bookings.map(({name, date, room, nights}) => (
+      {bookings.map(({id, name, date, room, nights}) => (
         <StyledBooking
-          key={`d${date}r${room}`}
+          key={id}
           date={date}
           room={room}
           nights={nights}
