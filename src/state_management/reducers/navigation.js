@@ -1,16 +1,12 @@
 const defaultState = {
-  bookingSheet: false,
-  checkout: false,
-  stock: false,
-  notes: false
+  activeMain: 'bookingSheet'
 }
 
 export default (state = defaultState, {type, payload}) => {
   switch(type){
     case 'SET_MAIN':
       return{
-        ...defaultState,
-        [payload]: true
+        activeMain: payload
       }
       
     default:

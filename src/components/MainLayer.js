@@ -2,6 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import {connect} from 'react-redux'
 
+import {getMainsFlags} from '../state_management/selectors/navigation'
+
 import BookingSheet from './mains/booking_sheet/BookingSheet'
 import Checkout from './mains/Checkout'
 import Stock from './mains/Stock'
@@ -24,8 +26,6 @@ const StyledMainLayer = styled.div`
   height: 100%;
 `
 
-const mapStateToProps = ({navigation}) => ({
-  ...navigation
-})
+const mapStateToProps = ({navigation}) => (getMainsFlags(navigation))
 
 export default connect(mapStateToProps)(MainLayer)

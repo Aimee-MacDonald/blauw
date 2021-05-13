@@ -1,14 +1,11 @@
 import navigationReducer from '../../../state_management/reducers/navigation'
 
-test('Navigate to main', () => {
+test(`Navigate from 'Notes' to 'Booking Sheet'`, () => {
   const state = {
-    bookingSheet: false,
-    checkout: false,
-    stock: false,
-    notes: false
+    activeMain: 'stock'
   }
 
   const action = {type: 'SET_MAIN', payload: 'bookingSheet'}
   const result = navigationReducer(state, action)
-  expect(result).toEqual({...state, bookingSheet: true})
+  expect(result).toEqual({activeMain: 'bookingSheet'})
 })
