@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 
 import {toggleControl} from '../../state_management/actions/controls'
 import {setModal} from '../../state_management/actions/modal'
+import {getMainsFlags} from '../../state_management/selectors/navigation'
 
 const Toolbox = props => (
   <StyledToolbox {...props}
@@ -31,7 +32,7 @@ const StyledToolbox = styled.nav`
 const mapStateToProps = ({controls, navigation}) => {
   return{
     open: controls.right.open,
-    navigation
+    navigation : getMainsFlags(navigation)
   }
 }
 
