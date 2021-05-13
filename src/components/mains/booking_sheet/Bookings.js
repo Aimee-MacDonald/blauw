@@ -2,15 +2,19 @@ import React from 'react'
 import styled from 'styled-components'
 import {connect} from 'react-redux'
 
-const Bookings = ({bookings}) => {
+import {selectBooking} from '../../../state_management/actions/bookings'
+
+const Bookings = props => {
   return(
     <StyledBookings>
-      {bookings.map(({id, name, date, room, nights}) => (
+      {props.bookings.map(({id, name, date, room, nights}) => (
         <StyledBooking
           key={id}
           date={date}
           room={room}
           nights={nights}
+          onClick={() => props.dispatch(selectBooking(id))}
+          selected={props.selectedBooking === id ? true : false}
         >{name}</StyledBooking>))}
     </StyledBookings>
   )
@@ -26,7 +30,7 @@ const StyledBookings = styled.div`
 `
 
 const StyledBooking = styled.div`
-  background-color: cornflowerblue;
+  background-color: ${props => props.selected ? 'orangered' : 'cornflowerblue'};
   grid-column-start: ${props => props.date};
   grid-column-end: ${props => props.date + props.nights};
   grid-row-start: ${props => props.room};
@@ -34,8 +38,10 @@ const StyledBooking = styled.div`
   justify-content: center;
   align-items: center;
   border-radius: 0.2rem;
-  margin: 0.1rem
+  margin: 0.1rem;
+  transition: 0.4s;
+  cursor: pointer;
 `
 
-const mapStateToProps = ({bookings}) => ({bookings})
+const mapStateToProps = ({bookings}) => bookings
 export default connect(mapStateToProps)(Bookings)
