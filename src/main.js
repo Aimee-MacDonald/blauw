@@ -2,7 +2,6 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import styled from 'styled-components'
 import {Provider} from 'react-redux'
-import {connect} from 'react-redux'
 
 import createStore from './state_management/createStore'
 import ServerConnectionProvider from './util/ServerConnection'
@@ -17,7 +16,7 @@ const store = createStore()
 const MainComponent = () => (
   <Provider store={store}>
     <ServerConnectionProvider>
-      <StyledMainComponent as='div'>
+      <StyledMainComponent>
         <GlobalStyle />
         <MainLayer />
         <ControlLayer />
@@ -27,7 +26,7 @@ const MainComponent = () => (
   </Provider>
 )
 
-const StyledMainComponent = styled.section`
+const StyledMainComponent = styled.div`
   width: 100vw;
   height: 100vh;
 `
