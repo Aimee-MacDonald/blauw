@@ -11,9 +11,9 @@ const Toolbox = props => (
     onMouseEnter={() => props.dispatch(toggleControl('right'))}
     onMouseLeave={() => props.dispatch(toggleControl('right'))}
   >
+    {props.open && <button onClick={() => props.dispatch(toggleControlLock('right'))}>Lock</button>}
     {props.open && (
       <div>
-        <button onClick={() => props.dispatch(toggleControlLock('right'))}>Lock</button>
         {props.navigation.bookingSheet && <button onClick={() => props.dispatch(setModal('createBooking'))}>Create Booking</button>}
       </div>
     )}

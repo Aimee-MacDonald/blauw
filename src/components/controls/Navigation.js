@@ -10,9 +10,9 @@ const Navigation = props => (
     onMouseEnter={() => props.dispatch(toggleControl('left'))}
     onMouseLeave={() => props.dispatch(toggleControl('left'))}
   >
+    {props.open && <button onClick={() => props.dispatch(toggleControlLock('left'))}>Lock</button>}
     {props.open && (
       <div>
-        <button onClick={() => props.dispatch(toggleControlLock('left'))}>Lock</button>
         <button onClick={() => props.dispatch(setMain('bookingSheet'))}>Booking Sheet</button>
         <button onClick={() => props.dispatch(setMain('checkout'))}>Checkout</button>
         <button onClick={() => props.dispatch(setMain('stock'))}>Stock</button>
