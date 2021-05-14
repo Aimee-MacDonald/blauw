@@ -1,9 +1,11 @@
 const defaultState = {
   left: {
-    open: false
+    open: false,
+    locked: false
   },
   right: {
-    open: false
+    open: false,
+    locked: false
   }
 }
 
@@ -13,7 +15,17 @@ export default (state = defaultState, {type, payload}) => {
       return{
         ...state,
         [payload]: {
-          open: !state[payload].open
+          open: state[payload].locked ? state[payload].open : !state[payload].open,
+          locked: state[payload].locked
+        }
+      }
+
+    case 'TOGGLE_CONTROL_LOCK':
+      return{
+        ...state,
+        [payload]: {
+          open: state[payload].open,
+          locked: !state[payload].locked
         }
       }
 

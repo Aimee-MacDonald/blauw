@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import {connect} from 'react-redux';
 
-import {toggleControl} from '../../state_management/actions/controls'
+import {toggleControl, toggleControlLock} from '../../state_management/actions/controls'
 import {setMain} from '../../state_management/actions/navigation'
 
 const Navigation = props => (
@@ -10,10 +10,15 @@ const Navigation = props => (
     onMouseEnter={() => props.dispatch(toggleControl('left'))}
     onMouseLeave={() => props.dispatch(toggleControl('left'))}
   >
-    {props.open && <button onClick={() => props.dispatch(setMain('bookingSheet'))}>Booking Sheet</button>}
-    {props.open && <button onClick={() => props.dispatch(setMain('checkout'))}>Checkout</button>}
-    {props.open && <button onClick={() => props.dispatch(setMain('stock'))}>Stock</button>}
-    {props.open && <button onClick={() => props.dispatch(setMain('notes'))}>Notes</button>}
+    {props.open && (
+      <div>
+        <button onClick={() => props.dispatch(toggleControlLock('left'))}>Lock</button>
+        <button onClick={() => props.dispatch(setMain('bookingSheet'))}>Booking Sheet</button>
+        <button onClick={() => props.dispatch(setMain('checkout'))}>Checkout</button>
+        <button onClick={() => props.dispatch(setMain('stock'))}>Stock</button>
+        <button onClick={() => props.dispatch(setMain('notes'))}>Notes</button>
+      </div>
+    )}
   </StyledNavigation>
 )
 
@@ -27,16 +32,6 @@ const StyledNavigation = styled.nav`
   border-bottom-right-radius: 0.4rem;
   padding: 1rem;
   box-shadow: ${props => props.open ? '0.2rem 0 1rem 0 #248' : 0};
-  display: flex;
-  flex-flow: nowrap column;
-
-  > button{
-    background-color: yellow;
-    margin: 0.2rem;
-    padding: 0.4rem;
-    font-weight: bold;
-    font-size: 16pt;
-  }
 `
 
 const mapStateToProps = ({controls}) => ({

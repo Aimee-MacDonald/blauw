@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import {connect} from 'react-redux'
 
-import {toggleControl} from '../../state_management/actions/controls'
+import {toggleControl, toggleControlLock} from '../../state_management/actions/controls'
 import {setModal} from '../../state_management/actions/modal'
 import {getMainsFlags} from '../../state_management/selectors/navigation'
 
@@ -12,7 +12,10 @@ const Toolbox = props => (
     onMouseLeave={() => props.dispatch(toggleControl('right'))}
   >
     {props.open && (
-      props.navigation.bookingSheet && <button onClick={() => props.dispatch(setModal('createBooking'))}>Create Booking</button>
+      <div>
+        <button onClick={() => props.dispatch(toggleControlLock('right'))}>Lock</button>
+        {props.navigation.bookingSheet && <button onClick={() => props.dispatch(setModal('createBooking'))}>Create Booking</button>}
+      </div>
     )}
   </StyledToolbox>
 )

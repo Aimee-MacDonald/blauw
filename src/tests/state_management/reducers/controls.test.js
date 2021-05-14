@@ -27,3 +27,48 @@ test('Close right control', () => {
   const result = controlReducer(state, action)
   expect(result).toEqual({left: {open: false}, right: {open: false}})
 })
+
+test('Lock left control', () => {
+  const state = {
+    left: {
+      open: false,
+      locked: false
+    },
+    right: {
+      open: false,
+      locked: false
+    }
+  }
+
+  const action = {type: 'TOGGLE_CONTROL_LOCK', payload: 'left'}
+  const result = controlReducer(state, action)
+
+  expect(result).toEqual({
+    left: {
+      open: false,
+      locked: true
+    },
+    right: {
+      open: false,
+      locked: false
+    }
+  })
+})
+
+test('Toggle locked control', () => {
+  const state = {
+    left: {
+      open: false,
+      locked: true
+    },
+    right: {
+      open: false,
+      locked: false
+    }
+  }
+
+  const action = {type: 'TOGGLE_CONTROL', payload: 'left'}
+  const result = controlReducer(state, action)
+
+  expect(result).toEqual(state)
+})
