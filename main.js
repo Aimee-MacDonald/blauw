@@ -7,6 +7,7 @@ app.once('ready', () => {
   })
 
   window.setMenu(null)
+  window.webContents.openDevTools()
   window.maximize()
   window.loadFile('main.html')
 })
