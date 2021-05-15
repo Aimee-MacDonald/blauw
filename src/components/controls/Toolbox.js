@@ -5,7 +5,6 @@ import {connect} from 'react-redux'
 import {toggleControl, toggleControlLock} from '../../state_management/actions/controls'
 import {setModal} from '../../state_management/actions/modal'
 import {getMainsFlags} from '../../state_management/selectors/navigation'
-import {deleteBooking} from '../../state_management/actions/bookings'
 
 const Toolbox = props => (
   <StyledToolbox {...props}
@@ -18,7 +17,7 @@ const Toolbox = props => (
         {props.navigation.bookingSheet && (
           <div>
             <button onClick={() => props.dispatch(setModal('createBooking'))}>Create Booking</button>
-            {props.selectedBooking && <button onClick={() => props.dispatch(deleteBooking(props.selectedBooking))}>Delete Booking</button>}
+            {props.selectedBooking && <button onClick={() => props.dispatch(setModal('deleteBooking'))}>Delete Booking</button>}
           </div>
         )}
       </div>

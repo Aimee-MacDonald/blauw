@@ -3,10 +3,12 @@ import styled from 'styled-components'
 import {connect} from 'react-redux'
 
 import CreateBooking from './modals/CreateBooking'
+import DeleteBooking from './modals/DeleteBooking'
 
 const ModalLayer = props => (
   <StyledModalLayer {...props}>
-    <CreateBooking />
+    {props.activeModal === 'createBooking' && <CreateBooking />}
+    {props.activeModal === 'deleteBooking' && <DeleteBooking bookingId={props.bookingId} />}
   </StyledModalLayer>
 )
 
@@ -23,8 +25,10 @@ const StyledModalLayer = styled.div`
   align-items: center;
 `
 
-const mapStateToProps = ({modal}) => ({
-  modalActive: !!modal.activeModal
+const mapStateToProps = ({modal, bookings}) => ({
+  modalActive: !!modal.activeModal,
+  activeModal: modal.activeModal,
+  bookingId: bookings.selectedBooking
 })
 
 export default connect(mapStateToProps)(ModalLayer)
