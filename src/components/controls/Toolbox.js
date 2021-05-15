@@ -5,6 +5,7 @@ import {connect} from 'react-redux'
 import {toggleControl, toggleControlLock} from '../../state_management/actions/controls'
 import {setModal} from '../../state_management/actions/modal'
 import {getMainsFlags} from '../../state_management/selectors/navigation'
+import {deleteBooking} from '../../state_management/actions/bookings'
 
 const Toolbox = props => (
   <StyledToolbox {...props}
@@ -14,7 +15,12 @@ const Toolbox = props => (
     {props.open && <button onClick={() => props.dispatch(toggleControlLock('right'))}>Lock</button>}
     {props.open && (
       <div>
-        {props.navigation.bookingSheet && <button onClick={() => props.dispatch(setModal('createBooking'))}>Create Booking</button>}
+        {props.navigation.bookingSheet && (
+          <div>
+            <button onClick={() => props.dispatch(setModal('createBooking'))}>Create Booking</button>
+            {props.selectedBooking && <button onClick={() => props.dispatch(deleteBooking(props.selectedBooking))}>Delete Booking</button>}
+          </div>
+        )}
       </div>
     )}
   </StyledToolbox>
@@ -32,11 +38,10 @@ const StyledToolbox = styled.nav`
   box-shadow: ${props => props.open ? '-0.2rem 0 1rem 0 #248' : 0};
 `
 
-const mapStateToProps = ({controls, navigation}) => {
-  return{
-    open: controls.right.open,
-    navigation : getMainsFlags(navigation)
-  }
-}
+const mapStateToProps = ({controls, navigation, bookings}) => ({
+  open: controls.right.open,
+  navigation : getMainsFlags(navigation),
+  selectedBooking: bookings.selectedBooking
+})
 
 export default connect(mapStateToProps)(Toolbox)

@@ -10,6 +10,13 @@ export default (state = defaultState, {type, payload}) => {
 
     case 'SELECT_BOOKING':
       return {...state, selectedBooking: payload}
+
+    case 'DELETE_BOOKING':
+      return {
+        ...state,
+        bookings: state.bookings.filter(booking => booking.id !== payload),
+        selectedBooking: null
+      }
       
     default:
       return state
