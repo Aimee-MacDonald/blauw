@@ -15,7 +15,7 @@ const ModalLayer = props => (
 const StyledModalLayer = styled.div`
   background-color: ${props => props.modalActive ? 'hotpink' : 'transparent'};
   position: fixed;
-  z-index: 2;
+  z-index: 30;
   width: 100%;
   height: ${props => props.modalActive ? '100%' : '0'};
   overflow: hidden;

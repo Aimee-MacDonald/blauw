@@ -21,7 +21,7 @@ const MainLayer = props => (
 const StyledMainLayer = styled.div`
   background-color: purple;
   position: fixed;
-  z-index: 0;
+  z-index: 10;
   width: 100%;
   height: 100%;
 `

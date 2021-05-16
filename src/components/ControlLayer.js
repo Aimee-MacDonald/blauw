@@ -15,7 +15,7 @@ const ControlLayer = () => (
 
 const StyledControlLayer = styled.div`
   position: fixed;
-  z-index: 1;
+  z-index: 20;
   width: 100vw;
   height: 0;
   overflow: visible;
