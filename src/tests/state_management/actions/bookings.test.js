@@ -12,7 +12,7 @@ test(`Generate a 'create booking' action`, () => {
 
   expect(booking).toEqual({
     type: 'CREATE_BOOKING',
-    payload: {...bookingData, id: `d${bookingData.date}r${bookingData.room}n${bookingData.nights}`}
+    payload: {...bookingData, id: expect.any(String)}
   })
 })
 
