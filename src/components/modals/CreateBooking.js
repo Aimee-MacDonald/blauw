@@ -50,7 +50,35 @@ const CreateBooking = props => {
 }
 
 const StyledCreateBooking = styled.form`
-  background-color: lime;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 1.6rem;
+
+  h1{
+    grid-column-start: 1;
+    grid-column-end: 3;
+    margin-bottom: 3.2rem;
+    text-align: center;
+  }
+
+  label{
+    text-align: right;
+    margin-top: 0.4rem;
+    padding-right: 0.8rem;
+  }
+
+  input{
+    background-color: transparent;
+    border: none;
+    border-bottom 1px solid black;
+    width: 75%;
+    margin-top: 0.4rem;
+  }
+
+  button{
+    padding: 0.4rem;
+    margin: 3.2rem 0.1rem 0 0.2rem;
+  }
 `
 
 export default connect()(CreateBooking)
