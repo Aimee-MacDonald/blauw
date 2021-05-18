@@ -17,3 +17,8 @@ export const deleteBooking = bookingId => ({
   type: 'DELETE_BOOKING',
   payload: bookingId
 })
+
+export const updateBooking = bookingData => ({
+  type: 'UPDATE_BOOKING',
+  payload: bookingData
+})

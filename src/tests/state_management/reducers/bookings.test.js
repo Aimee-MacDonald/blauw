@@ -70,3 +70,30 @@ test('Delete a booking', () => {
     selectedBooking: null
   })
 })
+
+test('Update a booking', () => {
+  const state = {bookings: [{
+    id: '123abc',
+    name: 'name',
+    date: 1,
+    room: 2,
+    nights: 3
+  }]}
+
+  const action = {
+    type: 'UPDATE_BOOKING',
+    payload: {
+      id: '123abc',
+      nights: 4
+    }
+  }
+
+  const result = bookingsReducer(state, action)
+  expect(result).toEqual({bookings: [{
+    id: '123abc',
+    name: 'name',
+    date: 1,
+    room: 2,
+    nights: 4
+  }]})
+})

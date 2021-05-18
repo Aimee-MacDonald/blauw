@@ -4,11 +4,13 @@ import {connect} from 'react-redux'
 
 import CreateBooking from './modals/CreateBooking'
 import DeleteBooking from './modals/DeleteBooking'
+import EditBooking from './modals/EditBooking'
 
 const ModalLayer = props => (
   <StyledModalLayer {...props}>
     {props.activeModal === 'createBooking' && <CreateBooking />}
     {props.activeModal === 'deleteBooking' && <DeleteBooking bookingId={props.bookingId} />}
+    {props.activeModal === 'editBooking' && <EditBooking bookingId={props.bookingId}/>}
   </StyledModalLayer>
 )
 

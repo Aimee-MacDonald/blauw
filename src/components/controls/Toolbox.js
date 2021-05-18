@@ -18,6 +18,7 @@ const Toolbox = props => (
           <div>
             <button onClick={() => props.dispatch(setModal('createBooking'))}>Create Booking</button>
             {props.selectedBooking && <button onClick={() => props.dispatch(setModal('deleteBooking'))}>Delete Booking</button>}
+            {props.selectedBooking && <button onClick={() => props.dispatch(setModal('editBooking'))}>Edit Booking</button>}
           </div>
         )}
       </div>

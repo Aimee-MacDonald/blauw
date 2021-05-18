@@ -1,4 +1,4 @@
-import {createBooking, deleteBooking, selectBooking} from '../../../state_management/actions/bookings'
+import {createBooking, deleteBooking, selectBooking, updateBooking} from '../../../state_management/actions/bookings'
 
 test(`Generate a 'create booking' action`, () => {
   const bookingData = {
@@ -31,5 +31,26 @@ test(`Generate a 'delete booking' action`, () => {
   expect(action).toEqual({
     type: 'DELETE_BOOKING',
     payload: {id: 'abc123'}
+  })
+})
+
+test(`Generate an 'update booking' action`, () => {
+  const action = updateBooking({
+    id: 'abc123',
+    name: 'name',
+    date: '1',
+    room: '2',
+    nights: '4'
+  })
+
+  expect(action).toEqual({
+    type: 'UPDATE_BOOKING',
+    payload: {
+      id: 'abc123',
+      name: 'name',
+      date: '1',
+      room: '2',
+      nights: '4'
+    }
   })
 })
