@@ -5,7 +5,10 @@ import {connect} from 'react-redux'
 import {selectBooking} from '../../../state_management/actions/bookings'
 
 const Bookings = props => (
-  <StyledBookings onScroll={e => props.setScrollOffsets({x: e.target.scrollLeft, y: e.target.scrollTop})}>
+  <StyledBookings
+    id={'booking_sheet'}
+    onScroll={e => props.setScrollOffsets({x: e.target.scrollLeft, y: e.target.scrollTop})}
+    onClick={e => {if(e.target.id === 'booking_sheet')props.dispatch(selectBooking())}}>
     {props.bookings.map(({id, name, date, room, nights}) => (
       <StyledBooking
         key={id}
