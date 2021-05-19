@@ -6,7 +6,7 @@ import Bookings from './Bookings'
 
 const BookingSheet = () => (
   <StyledBookingSheet>
-    {/*<Dates/>*/}
+    <Dates/>
     <Bookings />
   </StyledBookingSheet>
 )
