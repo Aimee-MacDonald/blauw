@@ -4,29 +4,29 @@ import {connect} from 'react-redux'
 
 import {selectBooking} from '../../../state_management/actions/bookings'
 
-const Bookings = props => {
-  return(
-    <StyledBookings>
-      {props.bookings.map(({id, name, date, room, nights}) => (
-        <StyledBooking
-          key={id}
-          date={date}
-          room={room}
-          nights={nights}
-          onClick={() => props.dispatch(selectBooking(id))}
-          selected={props.selectedBooking === id ? true : false}
-        >{name}</StyledBooking>))}
-    </StyledBookings>
-  )
-}
+const Bookings = props => (
+  <StyledBookings onScroll={e => props.setScrollOffsets({x: e.target.scrollLeft, y: e.target.scrollTop})}>
+    {props.bookings.map(({id, name, date, room, nights}) => (
+      <StyledBooking
+        key={id}
+        date={date}
+        room={room}
+        nights={nights}
+        onClick={() => props.dispatch(selectBooking(id))}
+        selected={props.selectedBooking === id ? true : false}
+      >{name}</StyledBooking>))}
+  </StyledBookings>
+)
 
 const StyledBookings = styled.div`
   background-color: aquamarine;
   width: 100%;
   height: 100%;
   display: grid;
-  grid-template-columns: repeat(30, 1fr);
-  grid-template-rows:repeat(30, 1fr);
+  grid-template-columns: repeat(60, 3.2rem);
+  grid-template-rows:repeat(80, 2rem);
+  overflow-x: scroll;
+  overflow-y: scroll;
 `
 
 const StyledBooking = styled.div`
