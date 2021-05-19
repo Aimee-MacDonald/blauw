@@ -16,7 +16,7 @@ const Bookings = props => (
         room={room}
         nights={nights}
         onClick={() => props.dispatch(selectBooking(id))}
-        selected={props.selectedBooking === id ? true : false}
+        selected={props.selectedBooking === id}
       >{name}</StyledBooking>))}
   </StyledBookings>
 )
