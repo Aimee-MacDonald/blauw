@@ -23,8 +23,8 @@ const StyledBookings = styled.div`
   width: 100%;
   height: 100%;
   display: grid;
-  grid-template-columns: repeat(60, 3.2rem);
-  grid-template-rows:repeat(80, 2rem);
+  grid-template-columns: repeat(60, 64px);
+  grid-template-rows: repeat(80, 32px);
   overflow-x: scroll;
   overflow-y: scroll;
 `

@@ -4,104 +4,111 @@ import styled from 'styled-components'
 const Rooms = props => {
   const roomsEl = useRef(null)
   useEffect(() => roomsEl.current.scrollTop = props.scroll)
+
+  const rooms = [
+    'Camping 1',
+    'Camping 2',
+    'Camping 3',
+    'Camping 4',
+    'Camping 5',
+    'Camping 6',
+    'Camping 7',
+    'Camping 8',
+    'Camping 9',
+    'Camping 10',
+    'Camping 11',
+    'Camping 12',
+    'Camping 13',
+    'Camping 14',
+    'Camping 15',
+    'Camping 16',
+    'Camping 17',
+    'Camping 18',
+    'Camping 19',
+    'Camping 20',
+    'Camping 21',
+    'Camping 22',
+    'Camping 23',
+    'Camping 24',
+    'Camping 25',
+    'Camping 26',
+    'Camping 27',
+    'Camping 28',
+    'Camping 29',
+    'Camping 30',
+    'Camping 31',
+    'Camping 32',
+    'Camping 33',
+    'Camping 34',
+    'Camping 35',
+    'Camping 36',
+    'Camping 37',
+    'Camping 38',
+    'Camping 39',
+    'Camping 40',
+    'Camping 41',
+    'Camping 42',
+    'Camping 43',
+    'Camping 44',
+    'Camping 45',
+    'Camping 46',
+    'Camping 47',
+    'Camping 48',
+    'Camping 49',
+    'Camping 50',
+    'Camping 51',
+    'Camping 52',
+    'Camping 53',
+    'Camping 54',
+    'Camping 55',
+    'Camping 56',
+    'Camping 57',
+    'Camping 58',
+    'Camping 59',
+    'Camping 60',
+    'Camping 61',
+    'Camping 62',
+    'Camping 63',
+    'Camping 64',
+    'Camping 65',
+    'Camping 66',
+    'Camping 67',
+    'Camping 68',
+    'Camping 69',
+    'Camping 70',
+    'Camping 71',
+    'Camping 72',
+    'Camping 73',
+    'Camping 74',
+    'Camping 75',
+    'Camping 76',
+    'Camping 77',
+    'Camping 78',
+    'Camping 79',
+    'Camping 80'
+  ]
   
   return(
     <StyledRooms ref={roomsEl}>
-      <p>Camping 1</p>
-      <p>Camping 2</p>
-      <p>Camping 3</p>
-      <p>Camping 4</p>
-      <p>Camping 5</p>
-      <p>Camping 6</p>
-      <p>Camping 7</p>
-      <p>Camping 8</p>
-      <p>Camping 9</p>
-      <p>Camping 10</p>
-      <p>Camping 11</p>
-      <p>Camping 12</p>
-      <p>Camping 13</p>
-      <p>Camping 14</p>
-      <p>Camping 15</p>
-      <p>Camping 16</p>
-      <p>Camping 17</p>
-      <p>Camping 18</p>
-      <p>Camping 19</p>
-      <p>Camping 20</p>
-      <p>Camping 21</p>
-      <p>Camping 22</p>
-      <p>Camping 23</p>
-      <p>Camping 24</p>
-      <p>Camping 25</p>
-      <p>Camping 26</p>
-      <p>Camping 27</p>
-      <p>Camping 28</p>
-      <p>Camping 29</p>
-      <p>Camping 30</p>
-      <p>Camping 31</p>
-      <p>Camping 32</p>
-      <p>Camping 33</p>
-      <p>Camping 34</p>
-      <p>Camping 35</p>
-      <p>Camping 36</p>
-      <p>Camping 37</p>
-      <p>Camping 38</p>
-      <p>Camping 39</p>
-      <p>Camping 40</p>
-      <p>Camping 41</p>
-      <p>Camping 42</p>
-      <p>Camping 43</p>
-      <p>Camping 44</p>
-      <p>Camping 45</p>
-      <p>Camping 46</p>
-      <p>Camping 47</p>
-      <p>Camping 48</p>
-      <p>Camping 49</p>
-      <p>Camping 50</p>
-      <p>Camping 51</p>
-      <p>Camping 52</p>
-      <p>Camping 53</p>
-      <p>Camping 54</p>
-      <p>Camping 55</p>
-      <p>Camping 56</p>
-      <p>Camping 57</p>
-      <p>Camping 58</p>
-      <p>Camping 59</p>
-      <p>Camping 60</p>
-      <p>Camping 61</p>
-      <p>Camping 62</p>
-      <p>Camping 63</p>
-      <p>Camping 64</p>
-      <p>Camping 65</p>
-      <p>Camping 66</p>
-      <p>Camping 67</p>
-      <p>Camping 68</p>
-      <p>Camping 69</p>
-      <p>Camping 70</p>
-      <p>Camping 71</p>
-      <p>Camping 72</p>
-      <p>Camping 73</p>
-      <p>Camping 74</p>
-      <p>Camping 75</p>
-      <p>Camping 76</p>
-      <p>Camping 77</p>
-      <p>Camping 78</p>
-      <p>Camping 79</p>
-      <p>Camping 80</p>
+      {rooms.map((room, i) => <StyledRoom key={i} hoveredCell={props.hoveredCell === i + 1}><p>{room}</p></StyledRoom>)}
     </StyledRooms>
   )
 }
 
 const StyledRooms = styled.div`
-  background-color: lime;
   height: 100%;
   overflow-y: hidden;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows:repeat(80, 2rem);
+  grid-template-rows: repeat(80, 32px);
+`
+
+const StyledRoom = styled.div`
+  background-color: ${props => props.hoveredCell ? 'lime' : 'purple'};
+  display: flex;
+  align-items: center;
 
   p{
-    display: flex;
-    align-items: center;
     padding-left: 0.4rem;
   }
 `
