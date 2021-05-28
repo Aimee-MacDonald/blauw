@@ -41,3 +41,14 @@ export const formatDate = (dateObject) => {
     }
   }
 }
+
+export const normaliseDate = dateObject => {
+  if(typeof(dateObject) === 'number'){
+    let d = new Date(dateObject)
+    d = d.setHours(0, 0, 0, 0)
+    return d
+  } else {
+    const nd = dateObject.setHours(0, 0, 0, 0)
+    return nd
+  }
+}
