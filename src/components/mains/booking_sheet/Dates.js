@@ -1,19 +1,43 @@
-import React, {useRef, useEffect} from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 import styled from 'styled-components'
 
-const Dates = props => {
-  const dates = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60]               
+import {formatDate} from '../../../util/util'
 
+const Dates = props => {
   const datesEl = useRef(null)
+  const [currentDate, setCurrentDate] = useState(0)
+  const [startDate, setStartDate] = useState(0)
+  const [endDate, setEndDate] = useState(0)
+  const [dates, setDates] = useState([])
+
   useEffect(() => datesEl.current.scrollLeft = props.scroll)
-  
+
+  useEffect(() => {
+    let dateObject = new Date()
+    dateObject.setHours(0, 0, 0, 0)
+    const cd = dateObject.getTime()
+
+    dateObject.setDate(dateObject.getDate() - 30)
+    const sd = dateObject.getTime()
+
+    dateObject.setDate(dateObject.getDate() + 90)
+    const ed = dateObject.getTime()
+
+    let ds = []
+    for(let i = sd; i <= ed; i += 86400000) ds.push(i)
+    
+    setCurrentDate(cd)
+    setStartDate(sd)
+    setEndDate(ed)
+    setDates(ds)
+  }, [])
+
   return(
     <StyledDates ref={datesEl}>
-      {dates.map(date => (
-        <StyledDate key={`${date}`} hoveredCell={props.hoveredCell === date}>
-          <p>{date}</p>
-        </StyledDate>
-      ))}
+      {dates.map((datestamp, index) => <StyledDate key={index} hoveredCell={props.hoveredCell === index + 1}>
+        <p>{formatDate(datestamp).month}</p>
+        <p>{formatDate(datestamp).date}</p>
+      </StyledDate>)}
     </StyledDates>
   )
 }
@@ -23,18 +47,18 @@ const StyledDates = styled.div`
   width: 100%;
   overflow-x: hidden;
   display: grid;
-  grid-template-columns: repeat(60, 64px);
+  grid-template-columns: repeat(91, 64px);
 `
 
 const StyledDate = styled.div`
   background-color: ${props => props.hoveredCell ? 'lime' : 'purple'};
   display: flex;
   justify-content: center;
-  align-items: center;
+  flex-flow: nowrap column;
+  justify-content: center;
 
   p{
     text-align: center;
-    padding: 0.4rem 0;
     font-weight: bold;
     font-size: 16pt;
     display: flex;

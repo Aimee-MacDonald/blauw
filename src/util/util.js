@@ -24,10 +24,20 @@ export const formatDate = (dateObject) => {
     'December'
   ]
 
-  return{
-    day: days[dateObject.getDay()],
-    date: dateObject.getDate(),
-    month: months[dateObject.getMonth()],
-    year: dateObject.getFullYear()
+  if(typeof(dateObject) === 'number'){
+    const dt = new Date(dateObject)
+    return{
+      day: days[dt.getDay()],
+      date: dt.getDate(),
+      month: months[dt.getMonth()],
+      year: dt.getFullYear()
+    }
+  } else {
+    return{
+      day: days[dateObject.getDay()],
+      date: dateObject.getDate(),
+      month: months[dateObject.getMonth()],
+      year: dateObject.getFullYear()
+    }
   }
 }
