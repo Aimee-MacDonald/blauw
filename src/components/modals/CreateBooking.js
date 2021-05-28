@@ -6,6 +6,7 @@ import {ServerConnectionContext} from '../../util/ServerConnection'
 
 import {setModal} from '../../state_management/actions/modal'
 import {createBooking} from '../../state_management/actions/bookings'
+import {normaliseDate} from '../../util/util'
 
 const CreateBooking = props => {
   const connection = useContext(ServerConnectionContext)
@@ -15,7 +16,7 @@ const CreateBooking = props => {
 
     const bookingDetails = {
       name: e.target.name.value,
-      date: parseInt(e.target.date.value),
+      date: normaliseDate(e.target.date.value),
       room: parseInt(e.target.room.value),
       nights: parseInt(e.target.nights.value)
     }
@@ -35,7 +36,7 @@ const CreateBooking = props => {
       <input id='name' />
 
       <label htmlFor='date'>Date:</label>
-      <input id='date' />
+      <input id='date' type='date' />
 
       <label htmlFor='room'>Room:</label>
       <input id='room' />

@@ -34,3 +34,9 @@ test('Create normalised datestamp from datestamp', () => {
   const nds = normaliseDate(ds)
   expect(nds).toBe(1622152800000)
 })
+
+test('Create normalised datestamp from date string', () => {
+  const ds = '2021-05-30'
+  const nds = normaliseDate(ds)
+  expect(nds).toBe(1622325600000)
+})
