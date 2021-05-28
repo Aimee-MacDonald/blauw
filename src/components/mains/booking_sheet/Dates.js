@@ -1,40 +1,28 @@
-import React, {useState, useEffect, useRef} from 'react'
+import React, {useEffect, useRef} from 'react'
 import styled from 'styled-components'
+import {connect} from 'react-redux'
 
-import {formatDate} from '../../../util/util'
+import {formatDate, normaliseDate} from '../../../util/util'
+
+import {setCurrentDate, setStartDate, setEndDate, repopulateDates} from '../../../state_management/actions/dates'
 
 const Dates = props => {
   const datesEl = useRef(null)
-  const [currentDate, setCurrentDate] = useState(0)
-  const [startDate, setStartDate] = useState(0)
-  const [endDate, setEndDate] = useState(0)
-  const [dates, setDates] = useState([])
 
   useEffect(() => datesEl.current.scrollLeft = props.scroll)
-
   useEffect(() => {
-    let dateObject = new Date()
-    dateObject.setHours(0, 0, 0, 0)
-    const cd = dateObject.getTime()
-
+    const dateObject = new Date()
+    props.dispatch(setCurrentDate(normaliseDate(dateObject)))
     dateObject.setDate(dateObject.getDate() - 30)
-    const sd = dateObject.getTime()
-
+    props.dispatch(setStartDate(normaliseDate(dateObject)))
     dateObject.setDate(dateObject.getDate() + 90)
-    const ed = dateObject.getTime()
-
-    let ds = []
-    for(let i = sd; i <= ed; i += 86400000) ds.push(i)
-    
-    setCurrentDate(cd)
-    setStartDate(sd)
-    setEndDate(ed)
-    setDates(ds)
+    props.dispatch(setEndDate(normaliseDate(dateObject)))
+    props.dispatch(repopulateDates())
   }, [])
 
   return(
     <StyledDates ref={datesEl}>
-      {dates.map((datestamp, index) => <StyledDate key={index} hoveredCell={props.hoveredCell === index + 1}>
+      {props.dates.dates.map((datestamp, index) => <StyledDate key={index} hoveredCell={props.hoveredCell === index + 1}>
         <p>{formatDate(datestamp).month}</p>
         <p>{formatDate(datestamp).date}</p>
       </StyledDate>)}
@@ -67,4 +55,6 @@ const StyledDate = styled.div`
   }
 `
 
-export default Dates
+const mapStateToProps = ({dates}) => ({dates})
+
+export default connect(mapStateToProps)(Dates)
