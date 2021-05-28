@@ -9,10 +9,11 @@ const Bookings = props => (
     id={'booking_sheet'}
     onScroll={e => props.setScrollOffsets({x: e.target.scrollLeft, y: e.target.scrollTop})}
     onClick={e => {if(e.target.id === 'booking_sheet')props.dispatch(selectBooking())}}>
+
     {props.bookings.map(({id, name, date, room, nights}) => (
       <StyledBooking
         key={id}
-        date={date}
+        dateIndex={(date - props.dates.startDate) / 86400000 + 1}
         room={room}
         nights={nights}
         onClick={() => props.dispatch(selectBooking(id))}
@@ -34,8 +35,8 @@ const StyledBookings = styled.div`
 
 const StyledBooking = styled.div`
   background-color: ${props => props.selected ? 'orangered' : 'cornflowerblue'};
-  grid-column-start: ${props => props.date};
-  grid-column-end: ${props => props.date + props.nights};
+  grid-column-start: ${props => props.dateIndex};
+  grid-column-end: ${props => props.dateIndex + props.nights};
   grid-row-start: ${props => props.room};
   display: flex;
   justify-content: center;
@@ -46,5 +47,5 @@ const StyledBooking = styled.div`
   cursor: pointer;
 `
 
-const mapStateToProps = ({bookings}) => bookings
+const mapStateToProps = ({bookings, dates}) => ({bookings: bookings.bookings, dates})
 export default connect(mapStateToProps)(Bookings)

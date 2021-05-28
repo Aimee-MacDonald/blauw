@@ -21,7 +21,7 @@ const Dates = props => {
   }, [])
 
   return(
-    <StyledDates ref={datesEl}>
+    <StyledDates ref={datesEl} numDates={(props.dates.endDate - props.dates.startDate) / 86400000 + 1}>
       {props.dates.dates.map((datestamp, index) => <StyledDate key={index} hoveredCell={props.hoveredCell === index + 1}>
         <p>{formatDate(datestamp).month}</p>
         <p>{formatDate(datestamp).date}</p>
@@ -35,7 +35,7 @@ const StyledDates = styled.div`
   width: 100%;
   overflow-x: hidden;
   display: grid;
-  grid-template-columns: repeat(91, 64px);
+  grid-template-columns: repeat(${props => props.numDates}, 64px);
 `
 
 const StyledDate = styled.div`
