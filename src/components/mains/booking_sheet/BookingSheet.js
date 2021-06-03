@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 import Bookings from './Bookings'
 import Dates from './Dates'
-import Rooms from './Rooms'
+import RoomsList from './RoomsList'
 
 const BookingSheet = () => {
   const [scrollOffsets, setScrollOffsets] = useState({x: 0, y: 0})
@@ -25,7 +25,7 @@ const BookingSheet = () => {
   return(
     <StyledBookingSheet onMouseMove={e => handleMouseMove(e)}>
       <Dates scroll={scrollOffsets.x} hoveredCell={hoveredCell.x}/>
-      <Rooms scroll={scrollOffsets.y} hoveredCell={hoveredCell.y}/>
+      <RoomsList scroll={scrollOffsets.y} hoveredCell={hoveredCell.y}/>
       <Bookings setScrollOffsets={setScrollOffsets}/>
     </StyledBookingSheet>
   )
