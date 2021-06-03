@@ -1,4 +1,4 @@
-export const getMainsFlags  = state => {
+export const getMainsFlags = state => {
   let mainsFlags = {
     bookingSheet: false,
     checkout: false,

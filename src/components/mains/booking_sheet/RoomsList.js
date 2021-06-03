@@ -1,140 +1,12 @@
 import React, {useState} from 'react'
 import styled from 'styled-components'
+import {connect} from 'react-redux'
 
-const RoomsList = () => {
-  const roomdata = [{
-    roomName: 'camping',
-    groupName: 'Camping',
-    maxPax: 80
-  }, {
-    roomName: 'safari_tent_1',
-    groupName: 'Safari Tents',
-    maxPax: 2
-  }, {
-    roomName: 'safari_tent_2',
-    groupName: 'Safari Tents',
-    maxPax: 2
-  }, {
-    roomName: 'safari_tent_3',
-    groupName: 'Safari Tents',
-    maxPax: 2
-  }, {
-    roomName: 'safari_tent_4',
-    groupName: 'Safari Tents',
-    maxPax: 2
-  }, {
-    roomName: 'safari_tent_5',
-    groupName: 'Safari Tents',
-    maxPax: 2
-  }, {
-    roomName: 'safari_tent_6',
-    groupName: 'Safari Tents',
-    maxPax: 2
-  }, {
-    roomName: 'safari_tent_7',
-    groupName: 'Safari Tents',
-    maxPax: 2
-  }, {
-    roomName: 'safari_tent_8',
-    groupName: 'Safari Tents',
-    maxPax: 2
-  }, {
-    roomName: 'safari_tent_9',
-    groupName: 'Safari Tents',
-    maxPax: 2
-  }, {
-    roomName: 'safari_tent_10',
-    groupName: 'Safari Tents',
-    maxPax: 2
-  }, {
-    roomName: 'safari_tent_11',
-    groupName: 'Safari Tents',
-    maxPax: 2
-  }, {
-    roomName: 'safari_tent_12',
-    groupName: 'Safari Tents',
-    maxPax: 2
-  }, {
-    roomName: 'dove_left',
-    groupName: 'Dove',
-    maxPax: 4
-  }, {
-    roomName: 'dove_middle',
-    groupName: 'Dove',
-    maxPax: 3
-  }, {
-    roomName: 'dove_right',
-    groupName: 'Dove',
-    maxPax: 4
-  }, {
-    roomName: 'loerie_left',
-    groupName: 'Loerie',
-    maxPax: 2
-  }, {
-    roomName: 'loerie_right',
-    groupName: 'Loerie',
-    maxPax: 2
-  }, {
-    roomName: 'loerie_family',
-    groupName: 'Loerie',
-    maxPax: 4
-  }, {
-    roomName: 'owl_left',
-    groupName: 'Owl',
-    maxPax: 2
-  }, {
-    roomName: 'owl_lounge',
-    groupName: 'Owl',
-    maxPax: 5
-  }, {
-    roomName: 'owl_right',
-    groupName: 'Owl',
-    maxPax: 2
-  }, {
-    roomName: 'dove_dorm',
-    groupName: 'Dorms',
-    maxPax: 8
-  }, {
-    roomName: 'forest_house',
-    groupName: 'Dorms',
-    maxPax: 7
-  }, {
-    roomName: 'forest_house_2',
-    groupName: 'Dorms',
-    maxPax: 11
-  }, {
-    roomName: 'loerie_dorm',
-    groupName: 'Dorms',
-    maxPax: 7
-  }, {
-    roomName: 'owl_dorm',
-    groupName: 'Dorms',
-    maxPax: 9
-  }]
+import {getRoomGroupings} from '../../../state_management/selectors/rooms'
 
-  let groups = []
-
-  roomdata.forEach(room => {
-    const groupIndex = groups.indexOf(groups.find(g => g.groupName === room.groupName))
-
-    if(groupIndex === -1){
-      groups.push({
-        groupName: room.groupName,
-        rooms: [{
-          roomName: room.roomName,
-          maxPax: room.maxPax
-        }]
-      })
-    } else {
-      groups[groupIndex].rooms.push({
-        roomName: room.roomName,
-        maxPax: room.maxPax
-      })
-    }
-  })
-
+const RoomsList = props => {
   let defaultGroupFlags = []
-  groups.forEach(({groupName, rooms}) => {
+  props.groups.forEach(({groupName, rooms}) => {
     let roomFlags = {}
     rooms.forEach(room => roomFlags = {
       ...roomFlags,
@@ -154,7 +26,7 @@ const RoomsList = () => {
   
   return(
     <StyledRoomsList>
-      {groups.map(({groupName, rooms}) => (
+      {props.groups.map(({groupName, rooms}) => (
         <StyledGroup key={groupName}>
           <h3 onClick={e => setGroupFlags({
             ...groupFlags,
@@ -225,4 +97,6 @@ const StyledBed = styled.div`
   }
 `
 
-export default RoomsList
+const mapStateToProps = ({rooms}) => ({groups: getRoomGroupings(rooms)})
+
+export default connect(mapStateToProps)(RoomsList)

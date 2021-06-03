@@ -6,6 +6,7 @@ import modalReducer from './reducers/modal'
 import bookingsReducer from './reducers/bookings'
 import utilReducer from './reducers/util'
 import datesReducer from './reducers/dates'
+import roomsReducer from './reducers/rooms'
 
 export const store = createStore(combineReducers({
   controls: controlsReducer,
@@ -13,7 +14,8 @@ export const store = createStore(combineReducers({
   modal: modalReducer,
   bookings: bookingsReducer,
   util: utilReducer,
-  dates: datesReducer
+  dates: datesReducer,
+  rooms: roomsReducer
 }))
  
 export default () => store
