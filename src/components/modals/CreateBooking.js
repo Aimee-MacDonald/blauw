@@ -39,7 +39,9 @@ const CreateBooking = props => {
       <input id='date' type='date' />
 
       <label htmlFor='room'>Room:</label>
-      <input id='room' />
+      <select id='room'>
+        {props.rooms.map((room, index) => <option value={index} key={room.roomName}>{`${room.roomName} - ${index}`}</option>)}
+      </select>
 
       <label htmlFor='nights'>Nights:</label>
       <input id='nights' />
@@ -76,10 +78,20 @@ const StyledCreateBooking = styled.form`
     margin-top: 0.4rem;
   }
 
+  select{
+    background-color: transparent;
+    border: none;
+    border-bottom 1px solid black;
+    width: 75%;
+    margin-top: 0.4rem;
+  }
+
   button{
     padding: 0.4rem;
     margin: 3.2rem 0.1rem 0 0.2rem;
   }
 `
 
-export default connect()(CreateBooking)
+const mapStateToProps = ({rooms}) => ({rooms})
+
+export default connect(mapStateToProps)(CreateBooking)
