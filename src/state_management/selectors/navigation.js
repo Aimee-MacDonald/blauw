@@ -3,7 +3,8 @@ export const getMainsFlags = state => {
     bookingSheet: false,
     checkout: false,
     stock: false,
-    notes: false
+    notes: false,
+    addRoom: false
   }
 
   return{

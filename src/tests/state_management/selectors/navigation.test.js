@@ -9,6 +9,7 @@ test('Return a list of flags for each main component', () => {
     bookingSheet: true,
     checkout: false,
     stock: false,
-    notes: false
+    notes: false,
+    addRoom: false
   })
 })
