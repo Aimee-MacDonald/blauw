@@ -2,9 +2,9 @@ import bookingsReducer from '../../../state_management/reducers/bookings'
 
 test('Create a new booking', () => {
   const payload = {
-    id: 'abc123',
-    name: 'name',
-    date: '1',
+    _id: 'abc123',
+    booking_name: 'name',
+    checkin_date: '1',
     room: '2',
     nights: '4'
   }
@@ -41,15 +41,15 @@ test('Select a booking', () => {
 test('Delete a booking', () => {
   const state = {
     bookings: [{
-      id: 'abc123',
-      name: 'name',
-      date: '1',
+      _id: 'abc123',
+      booking_name: 'name',
+      checkin_date: '1',
       room: '2',
       nights: '4'
     }, {
-      id: '123abc',
-      name: 'name2',
-      date: '1',
+      _id: '123abc',
+      booking_name: 'name2',
+      checkin_date: '1',
       room: '4',
       nights: '4'
     }],
@@ -61,9 +61,9 @@ test('Delete a booking', () => {
 
   expect(result).toEqual({
     bookings: [{
-      id: '123abc',
-      name: 'name2',
-      date: '1',
+      _id: '123abc',
+      booking_name: 'name2',
+      checkin_date: '1',
       room: '4',
       nights: '4'
     }],
@@ -73,9 +73,9 @@ test('Delete a booking', () => {
 
 test('Update a booking', () => {
   const state = {bookings: [{
-    id: '123abc',
-    name: 'name',
-    date: 1,
+    _id: '123abc',
+    booking_name: 'name',
+    checkin_date: 1,
     room: 2,
     nights: 3
   }]}
@@ -83,16 +83,16 @@ test('Update a booking', () => {
   const action = {
     type: 'UPDATE_BOOKING',
     payload: {
-      id: '123abc',
+      _id: '123abc',
       nights: 4
     }
   }
 
   const result = bookingsReducer(state, action)
   expect(result).toEqual({bookings: [{
-    id: '123abc',
-    name: 'name',
-    date: 1,
+    _id: '123abc',
+    booking_name: 'name',
+    checkin_date: 1,
     room: 2,
     nights: 4
   }]})

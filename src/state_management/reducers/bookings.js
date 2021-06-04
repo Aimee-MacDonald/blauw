@@ -14,7 +14,7 @@ export default (state = defaultState, {type, payload}) => {
     case 'DELETE_BOOKING':
       return{
         ...state,
-        bookings: state.bookings.filter(booking => booking.id !== payload),
+        bookings: state.bookings.filter(booking => booking._id !== payload),
         selectedBooking: null
       }
 
@@ -22,7 +22,7 @@ export default (state = defaultState, {type, payload}) => {
       return{
         ...state,
         bookings: state.bookings.map(booking => {
-          if(booking.id === payload.id){
+          if(booking._id === payload._id){
             return{
               ...booking,
               ...payload

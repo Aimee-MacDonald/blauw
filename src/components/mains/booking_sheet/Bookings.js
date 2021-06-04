@@ -10,15 +10,15 @@ const Bookings = props => (
     onScroll={e => props.setScrollOffsets({x: e.target.scrollLeft, y: e.target.scrollTop})}
     onClick={e => {if(e.target.id === 'booking_sheet')props.dispatch(selectBooking())}}>
 
-    {props.bookings.bookings.map(({id, name, date, room, nights}) => (
+    {props.bookings.bookings.map(booking => (
       <StyledBooking
-        key={id}
-        dateIndex={(date - props.dates.startDate) / 86400000 + 1}
-        room={room}
-        nights={nights}
-        onClick={() => props.dispatch(selectBooking(id))}
-        selected={props.bookings.selectedBooking === id}
-      >{name}</StyledBooking>))}
+        key={booking._id}
+        dateIndex={(booking.checkin_date - props.dates.startDate) / 86400000 + 1}
+        room={booking.room}
+        nights={booking.nights}
+        onClick={() => props.dispatch(selectBooking(booking._id))}
+        selected={props.bookings.selectedBooking === booking._id}
+      >{booking.booking_name}</StyledBooking>))}
   </StyledBookings>
 )
 

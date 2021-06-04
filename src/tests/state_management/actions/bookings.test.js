@@ -2,8 +2,8 @@ import {createBooking, deleteBooking, selectBooking, updateBooking} from '../../
 
 test(`Generate a 'create booking' action`, () => {
   const bookingData = {
-    name: 'name',
-    date: '1',
+    booking_name: 'name',
+    checkin_date: '1',
     room: '2',
     nights: '4'
   }
@@ -12,33 +12,33 @@ test(`Generate a 'create booking' action`, () => {
 
   expect(booking).toEqual({
     type: 'CREATE_BOOKING',
-    payload: {...bookingData, id: expect.any(String)}
+    payload: {...bookingData, _id: expect.any(String)}
   })
 })
 
 test(`Generate a 'select booking' action`, () => {
-  const action = selectBooking({id: 'abc123'})
+  const action = selectBooking({_id: 'abc123'})
 
   expect(action).toEqual({
     type: 'SELECT_BOOKING',
-    payload: {id: 'abc123'}
+    payload: {_id: 'abc123'}
   })
 })
 
 test(`Generate a 'delete booking' action`, () => {
-  const action = deleteBooking({id: 'abc123'})
+  const action = deleteBooking({_id: 'abc123'})
 
   expect(action).toEqual({
     type: 'DELETE_BOOKING',
-    payload: {id: 'abc123'}
+    payload: {_id: 'abc123'}
   })
 })
 
 test(`Generate an 'update booking' action`, () => {
   const action = updateBooking({
-    id: 'abc123',
-    name: 'name',
-    date: '1',
+    _id: 'abc123',
+    booking_name: 'name',
+    checkin_date: '1',
     room: '2',
     nights: '4'
   })
@@ -46,9 +46,9 @@ test(`Generate an 'update booking' action`, () => {
   expect(action).toEqual({
     type: 'UPDATE_BOOKING',
     payload: {
-      id: 'abc123',
-      name: 'name',
-      date: '1',
+      _id: 'abc123',
+      booking_name: 'name',
+      checkin_date: '1',
       room: '2',
       nights: '4'
     }

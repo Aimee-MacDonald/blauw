@@ -4,7 +4,7 @@ export const createBooking = bookingData => ({
   type: 'CREATE_BOOKING',
   payload: {
     ...bookingData,
-    id: v4()
+    _id: v4()
   }
 })
 

@@ -9,8 +9,8 @@ import EditBooking from './modals/EditBooking'
 const ModalLayer = props => (
   <StyledModalLayer {...props}>
     {props.activeModal === 'createBooking' && <CreateBooking />}
-    {props.activeModal === 'deleteBooking' && <DeleteBooking bookingId={props.bookingId} />}
-    {props.activeModal === 'editBooking' && <EditBooking bookingId={props.bookingId}/>}
+    {props.activeModal === 'deleteBooking' && <DeleteBooking _id={props._id} />}
+    {props.activeModal === 'editBooking' && <EditBooking _id={props._id}/>}
   </StyledModalLayer>
 )
 
@@ -30,7 +30,7 @@ const StyledModalLayer = styled.div`
 const mapStateToProps = ({modal, bookings}) => ({
   modalActive: !!modal.activeModal,
   activeModal: modal.activeModal,
-  bookingId: bookings.selectedBooking
+  _id: bookings.selectedBooking
 })
 
 export default connect(mapStateToProps)(ModalLayer)

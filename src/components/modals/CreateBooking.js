@@ -15,8 +15,8 @@ const CreateBooking = props => {
     e.preventDefault()
 
     const bookingDetails = {
-      name: e.target.name.value,
-      date: normaliseDate(e.target.date.value),
+      booking_name: e.target.name.value,
+      checkin_date: normaliseDate(e.target.date.value),
       room: parseInt(e.target.room.value),
       nights: parseInt(e.target.nights.value)
     }

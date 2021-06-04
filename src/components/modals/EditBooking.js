@@ -21,14 +21,13 @@ const EditBooking = props => {
 
   return(
     <StyledEditBooking onSubmit={saveBooking}>
-
       <h1>Edit Booking</h1>
 
       <label htmlFor='name'>Name:</label>
-      <input id='name' value={bookingDetails.name} onChange={e => editBooking({...bookingDetails, name: e.target.value})}/>
+      <input id='name' value={bookingDetails.booking_name} onChange={e => editBooking({...bookingDetails, booking_name: e.target.value})}/>
 
       <label htmlFor='date'>Date:</label>
-      <input id='date' value={bookingDetails.date} onChange={e => editBooking({...bookingDetails, date: parseInt(e.target.value) || 0})}/>
+      <input id='date' value={bookingDetails.checkin_date} onChange={e => editBooking({...bookingDetails, checkin_date: parseInt(e.target.value) || 0})}/>
 
       <label htmlFor='room'>Room:</label>
       <input id='room' value={bookingDetails.room} onChange={e => editBooking({...bookingDetails, room: parseInt(e.target.value) || 0})}/>
@@ -74,5 +73,5 @@ const StyledEditBooking = styled.form`
   }
 `
 
-const mapStateToProps = ({bookings}) => bookings.bookings.filter(booking => booking.id === bookings.selectedBooking)[0]
+const mapStateToProps = ({bookings}) => bookings.bookings.filter(booking => booking._id === bookings.selectedBooking)[0]
 export default connect(mapStateToProps)(EditBooking)

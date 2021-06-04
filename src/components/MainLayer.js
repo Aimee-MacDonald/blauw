@@ -1,6 +1,8 @@
-import React from 'react'
+import React, {useContext, useEffect} from 'react'
 import styled from 'styled-components'
 import {connect} from 'react-redux'
+
+import {ServerConnectionContext} from '../util/ServerConnection'
 
 import {getMainsFlags} from '../state_management/selectors/navigation'
 
@@ -10,15 +12,25 @@ import Stock from './mains/Stock'
 import Notes from './mains/Notes'
 import AddRoom from './mains/AddRoom'
 
-const MainLayer = props => (
-  <StyledMainLayer>
-    {props.bookingSheet && <BookingSheet/>}
-    {props.checkout && <Checkout/>}
-    {props.stock && <Stock/>}
-    {props.notes && <Notes />}
-    {props.addRoom && <AddRoom />}
-  </StyledMainLayer>
-)
+const MainLayer = props => {
+  const connection = useContext(ServerConnectionContext)
+
+  useEffect(() => {
+    connection.dispatch({reducer: 'bookings', action: {type: 'REFRESH_BOOKINGS'}})
+    // Load Rooms
+    // Load Bookings
+  }, [])
+
+  return(
+    <StyledMainLayer>
+      {props.bookingSheet && <BookingSheet/>}
+      {props.checkout && <Checkout/>}
+      {props.stock && <Stock/>}
+      {props.notes && <Notes />}
+      {props.addRoom && <AddRoom />}
+    </StyledMainLayer>
+  )
+}
 
 const StyledMainLayer = styled.div`
   background-color: purple;
