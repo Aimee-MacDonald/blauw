@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render 'Delete Booking' modal 1`] = `
+<div>
+  <h1>
+    Delete this booking?
+  </h1>
+  <p>
+    0a70ac70-0d82-4ee7-a10d-2bf30af2e9f0
+  </p>
+  <button
+    onClick={[Function]}
+  >
+    Yes
+  </button>
+  <button
+    onClick={[Function]}
+  >
+    No
+  </button>
+</div>
+`;
