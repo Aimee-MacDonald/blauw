@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Stock = () => (
+export const Stock = () => (
   <h1>Stock</h1>
 )
 
