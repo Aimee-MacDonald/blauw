@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 import RoomsList from './booking_sheet/RoomsList'
 
-const AddRoom = () => (
+export const AddRoom = () => (
   <StyledAddRoom>
     <StyledEditSection>
       <form>
