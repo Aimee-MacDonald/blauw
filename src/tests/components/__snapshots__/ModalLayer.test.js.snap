@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render 'Create Booking' Modal 1`] = `
+<styled.div
+  _id={null}
+  activeModal="createBooking"
+  modalActive={true}
+>
+  <Memo(Connect(CreateBooking)) />
+</styled.div>
+`;
+
+exports[`Render 'Delete Booking' Modal 1`] = `
+<styled.div
+  _id="abcd1234"
+  activeModal="deleteBooking"
+  modalActive={true}
+>
+  <Memo(Connect(DeleteBooking))
+    _id="abcd1234"
+  />
+</styled.div>
+`;
+
+exports[`Render 'Edit Booking' Modal 1`] = `
+<styled.div
+  _id="abcd1234"
+  activeModal="editBooking"
+  modalActive={true}
+>
+  <Memo(Connect(EditBooking))
+    _id="abcd1234"
+  />
+</styled.div>
+`;
+
+exports[`Render default Modal Layer 1`] = `
+<styled.div
+  _id={null}
+  activeModal={null}
+  modalActive={false}
+/>
+`;

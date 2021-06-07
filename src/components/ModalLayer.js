@@ -6,7 +6,7 @@ import CreateBooking from './modals/CreateBooking'
 import DeleteBooking from './modals/DeleteBooking'
 import EditBooking from './modals/EditBooking'
 
-const ModalLayer = props => (
+export const ModalLayer = props => (
   <StyledModalLayer {...props}>
     {props.activeModal === 'createBooking' && <CreateBooking />}
     {props.activeModal === 'deleteBooking' && <DeleteBooking _id={props._id} />}
