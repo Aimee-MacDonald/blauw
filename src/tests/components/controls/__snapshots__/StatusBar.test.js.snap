@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render connected Status Bar 1`] = `
+<styled.div
+  connected={true}
+/>
+`;
+
+exports[`Render disconnected Status Bar 1`] = `
+<styled.div
+  connected={false}
+>
+  <p>
+    Unable to Connect to the Local Server
+  </p>
+</styled.div>
+`;

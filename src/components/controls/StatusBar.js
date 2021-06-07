@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import {connect} from 'react-redux'
 
-const StatusBar = props => (
+export const StatusBar = props => (
   <StyledStatusBar {...props}>
     {!props.connected && <p>Unable to Connect to the Local Server</p>}
   </StyledStatusBar>
