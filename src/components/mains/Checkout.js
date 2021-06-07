@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Checkout = () => (
+export const Checkout = () => (
   <h1>Checkout</h1>
 )
 
