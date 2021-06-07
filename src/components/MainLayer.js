@@ -12,7 +12,7 @@ import Stock from './mains/Stock'
 import Notes from './mains/Notes'
 import AddRoom from './mains/AddRoom'
 
-const MainLayer = props => {
+export const MainLayer = props => {
   const connection = useContext(ServerConnectionContext)
 
   useEffect(() => {

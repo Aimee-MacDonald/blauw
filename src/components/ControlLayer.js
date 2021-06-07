@@ -5,7 +5,7 @@ import StatusBar from './controls/StatusBar'
 import Navigation from './controls/Navigation'
 import Toolbox from './controls/Toolbox'
 
-const ControlLayer = () => (
+export const ControlLayer = () => (
   <StyledControlLayer>
     <StatusBar />
     <Navigation />

@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render Add Room 1`] = `
+<styled.div>
+  <AddRoom />
+</styled.div>
+`;
+
+exports[`Render Booking Sheet 1`] = `
+<styled.div>
+  <BookingSheet />
+</styled.div>
+`;
+
+exports[`Render Checkout 1`] = `
+<styled.div>
+  <Checkout />
+</styled.div>
+`;
+
+exports[`Render Notes 1`] = `
+<styled.div>
+  <Notes />
+</styled.div>
+`;
+
+exports[`Render Stock 1`] = `
+<styled.div>
+  <Stock />
+</styled.div>
+`;
