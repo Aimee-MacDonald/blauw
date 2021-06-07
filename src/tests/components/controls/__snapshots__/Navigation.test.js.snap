@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render closed Navigation 1`] = `
+<styled.nav
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  open={false}
+/>
+`;
+
+exports[`Render opened Navigation 1`] = `
+<styled.nav
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  open={true}
+>
+  <button
+    onClick={[Function]}
+  >
+    Lock
+  </button>
+  <div>
+    <button
+      onClick={[Function]}
+    >
+      Booking Sheet
+    </button>
+    <button
+      onClick={[Function]}
+    >
+      Checkout
+    </button>
+    <button
+      onClick={[Function]}
+    >
+      Stock
+    </button>
+    <button
+      onClick={[Function]}
+    >
+      Notes
+    </button>
+    <button
+      onClick={[Function]}
+    >
+      Add Room
+    </button>
+  </div>
+</styled.nav>
+`;

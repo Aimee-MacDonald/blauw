@@ -5,11 +5,12 @@ import {connect} from 'react-redux';
 import {toggleControl, toggleControlLock} from '../../state_management/actions/controls'
 import {setMain} from '../../state_management/actions/navigation'
 
-const Navigation = props => (
+export const Navigation = props => (
   <StyledNavigation {...props}
     onMouseEnter={() => props.dispatch(toggleControl('left'))}
     onMouseLeave={() => props.dispatch(toggleControl('left'))}
   >
+    {console.log(JSON.stringify(props))}
     {props.open && <button onClick={() => props.dispatch(toggleControlLock('left'))}>Lock</button>}
     {props.open && (
       <div>
