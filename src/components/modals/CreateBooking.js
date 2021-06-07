@@ -8,7 +8,7 @@ import {setModal} from '../../state_management/actions/modal'
 import {createBooking} from '../../state_management/actions/bookings'
 import {normaliseDate} from '../../util/util'
 
-const CreateBooking = props => {
+export const CreateBooking = props => {
   const connection = useContext(ServerConnectionContext)
 
   const saveBooking = e => {

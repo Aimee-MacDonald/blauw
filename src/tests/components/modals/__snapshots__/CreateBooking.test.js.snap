@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render default 'Create Booking' modal 1`] = `
+<styled.form
+  onSubmit={[Function]}
+>
+  <h1>
+    Create Booking
+  </h1>
+  <label
+    htmlFor="name"
+  >
+    Name:
+  </label>
+  <input
+    id="name"
+  />
+  <label
+    htmlFor="date"
+  >
+    Date:
+  </label>
+  <input
+    id="date"
+    type="date"
+  />
+  <label
+    htmlFor="room"
+  >
+    Room:
+  </label>
+  <select
+    id="room"
+  >
+    <option
+      value={0}
+    >
+      camping - 0
+    </option>
+    <option
+      value={1}
+    >
+      safari_tent_1 - 1
+    </option>
+    <option
+      value={2}
+    >
+      safari_tent_2 - 2
+    </option>
+  </select>
+  <label
+    htmlFor="nights"
+  >
+    Nights:
+  </label>
+  <input
+    id="nights"
+  />
+  <button
+    onClick={[Function]}
+    type="reset"
+  >
+    Cancel
+  </button>
+  <button
+    type="submit"
+  >
+    Save
+  </button>
+</styled.form>
+`;
