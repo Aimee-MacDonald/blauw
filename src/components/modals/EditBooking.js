@@ -7,7 +7,7 @@ import {ServerConnectionContext} from '../../util/ServerConnection'
 import {updateBooking} from '../../state_management/actions/bookings'
 import {setModal} from '../../state_management/actions/modal'
 
-const EditBooking = props => {
+export const EditBooking = props => {
   const [bookingDetails, editBooking] = useState(props)
   const connection = useContext(ServerConnectionContext)
 

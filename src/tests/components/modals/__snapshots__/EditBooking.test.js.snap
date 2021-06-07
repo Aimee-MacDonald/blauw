@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render 'Edit Booking' Modal 1`] = `
+<styled.form
+  onSubmit={[Function]}
+>
+  <h1>
+    Edit Booking
+  </h1>
+  <label
+    htmlFor="name"
+  >
+    Name:
+  </label>
+  <input
+    id="name"
+    onChange={[Function]}
+    value="A"
+  />
+  <label
+    htmlFor="date"
+  >
+    Date:
+  </label>
+  <input
+    id="date"
+    onChange={[Function]}
+    value={1623016800000}
+  />
+  <label
+    htmlFor="room"
+  >
+    Room:
+  </label>
+  <input
+    id="room"
+    onChange={[Function]}
+    value={0}
+  />
+  <label
+    htmlFor="nights"
+  >
+    Nights:
+  </label>
+  <input
+    id="nights"
+    onChange={[Function]}
+    value={10}
+  />
+  <button
+    onClick={[Function]}
+    type="reset"
+  >
+    Cancel
+  </button>
+  <button
+    type="submit"
+  >
+    Save
+  </button>
+</styled.form>
+`;
