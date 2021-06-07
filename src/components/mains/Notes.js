@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Notes = () => (
+export const Notes = () => (
   <h1>Notes</h1>
 )
 
