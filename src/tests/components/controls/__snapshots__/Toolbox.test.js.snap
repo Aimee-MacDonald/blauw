@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render booking sheet Toolbox 1`] = `
+<styled.nav
+  navigation={
+    Object {
+      "addRoom": false,
+      "bookingSheet": true,
+      "checkout": false,
+      "notes": false,
+      "stock": false,
+    }
+  }
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  open={true}
+  selectedBooking={null}
+>
+  <button
+    onClick={[Function]}
+  >
+    Lock
+  </button>
+  <div>
+    <div>
+      <button
+        onClick={[Function]}
+      >
+        Create Booking
+      </button>
+    </div>
+  </div>
+</styled.nav>
+`;
+
+exports[`Render booking sheet Toolbox with a booking selected 1`] = `
+<styled.nav
+  navigation={
+    Object {
+      "addRoom": false,
+      "bookingSheet": true,
+      "checkout": false,
+      "notes": false,
+      "stock": false,
+    }
+  }
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  open={true}
+  selectedBooking="abcd1234"
+>
+  <button
+    onClick={[Function]}
+  >
+    Lock
+  </button>
+  <div>
+    <div>
+      <button
+        onClick={[Function]}
+      >
+        Create Booking
+      </button>
+      <button
+        onClick={[Function]}
+      >
+        Delete Booking
+      </button>
+      <button
+        onClick={[Function]}
+      >
+        Edit Booking
+      </button>
+    </div>
+  </div>
+</styled.nav>
+`;
+
+exports[`Render closed Toolbox 1`] = `
+<styled.nav
+  navigation={
+    Object {
+      "addRoom": false,
+      "bookingSheet": true,
+      "checkout": false,
+      "notes": false,
+      "stock": false,
+    }
+  }
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  open={false}
+  selectedBooking={null}
+/>
+`;

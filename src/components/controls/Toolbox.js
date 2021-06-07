@@ -6,12 +6,14 @@ import {toggleControl, toggleControlLock} from '../../state_management/actions/c
 import {setModal} from '../../state_management/actions/modal'
 import {getMainsFlags} from '../../state_management/selectors/navigation'
 
-const Toolbox = props => (
+export const Toolbox = props => (
   <StyledToolbox {...props}
     onMouseEnter={() => props.dispatch(toggleControl('right'))}
     onMouseLeave={() => props.dispatch(toggleControl('right'))}
   >
+  
     {props.open && <button onClick={() => props.dispatch(toggleControlLock('right'))}>Lock</button>}
+
     {props.open && (
       <div>
         {props.navigation.bookingSheet && (
