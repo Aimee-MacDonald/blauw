@@ -9,16 +9,18 @@
   "scripts": {
     "test": "concurrently \"webpack --config webpack.config.js --watch\" \"electron .\"",
     "build": "webpack --config webpack.config.js && electron-builder",
-    "jest": "jest"
+    "jest": "jest --config=jest.config.json --watch"
   },
   "devDependencies": {
     "@babel/core": "^7.13.16",
     "@babel/preset-env": "^7.14.1",
     "@babel/preset-react": "^7.13.13",
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.1",
     "babel-loader": "^8.2.2",
     "concurrently": "^6.0.2",
     "electron": "^12.0.5",
     "electron-builder": "^22.10.5",
+    "enzyme": "^3.11.0",
     "jest": "^26.6.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
