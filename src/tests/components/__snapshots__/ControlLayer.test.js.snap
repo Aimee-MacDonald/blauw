@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render default Control Layer 1`] = `
+<styled.div>
+  <Memo(Connect(StatusBar)) />
+  <Memo(Connect(Navigation)) />
+  <Memo(Connect(Toolbox)) />
+</styled.div>
+`;
