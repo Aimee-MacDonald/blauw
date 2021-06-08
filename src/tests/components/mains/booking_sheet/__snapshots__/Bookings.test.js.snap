@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render a booking 1`] = `
+<styled.div
+  id="booking_sheet"
+  onClick={[Function]}
+  onScroll={[Function]}
+>
+  <styled.div
+    dateIndex={27}
+    nights={8}
+    onClick={[Function]}
+    room={0}
+    selected={false}
+  >
+    Booking Name
+  </styled.div>
+</styled.div>
+`;
+
+exports[`Render a selected booking 1`] = `
+<styled.div
+  id="booking_sheet"
+  onClick={[Function]}
+  onScroll={[Function]}
+>
+  <styled.div
+    dateIndex={27}
+    nights={8}
+    onClick={[Function]}
+    room={0}
+    selected={true}
+  >
+    Booking Name
+  </styled.div>
+</styled.div>
+`;
+
+exports[`Render default Bookings 1`] = `
+<styled.div
+  id="booking_sheet"
+  onClick={[Function]}
+  onScroll={[Function]}
+/>
+`;
