@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 
 import {getRoomGroupings} from '../../../state_management/selectors/rooms'
 
-const RoomsList = props => {
+export const RoomsList = props => {
   let defaultGroupFlags = []
   props.groups.forEach(({groupName, rooms}) => {
     let roomFlags = {}
