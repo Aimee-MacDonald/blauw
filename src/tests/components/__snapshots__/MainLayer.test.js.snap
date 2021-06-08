@@ -8,7 +8,7 @@ exports[`Render Add Room 1`] = `
 
 exports[`Render Booking Sheet 1`] = `
 <styled.div>
-  <BookingSheet />
+  <Memo(Connect(BookingSheet)) />
 </styled.div>
 `;
 

@@ -1,71 +1,50 @@
-import React, {useState} from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import {connect} from 'react-redux'
 
 import {getRoomGroupings} from '../../../state_management/selectors/rooms'
 
-export const RoomsList = props => {
-  let defaultGroupFlags = []
-  props.groups.forEach(({groupName, rooms}) => {
-    let roomFlags = {}
-    rooms.forEach(room => roomFlags = {
-      ...roomFlags,
-      [room.roomName]: false
-    })
+export const RoomsList = ({groups, groupFlags, setGroupFlags}) => (
+  <StyledRoomsList>
+    {groups.map(({groupName, rooms}) => (
+      <StyledGroup key={groupName}>
+        <h3 onClick={e => setGroupFlags({
+          ...groupFlags,
+          [groupName]: {
+            ...groupFlags[groupName],
+            open: !groupFlags[groupName].open
+          }
+        })}>{groupName}</h3>
 
-    defaultGroupFlags = {
-      ...defaultGroupFlags,
-      [groupName]: {
-        open: false,
-        rooms: roomFlags
-      }
-    }
-  })
+        {groupFlags[groupName].open && rooms.map(({roomName, maxPax}) => {
+          const beds = []
+          for(let i = 0; i < maxPax; i++) beds.push(`Bed ${i + 1}`)
 
-  const [groupFlags, setGroupFlags] = useState(defaultGroupFlags)
-  
-  return(
-    <StyledRoomsList>
-      {props.groups.map(({groupName, rooms}) => (
-        <StyledGroup key={groupName}>
-          <h3 onClick={e => setGroupFlags({
-            ...groupFlags,
-            [groupName]: {
-              ...groupFlags[groupName],
-              open: !groupFlags[groupName].open
-            }
-          })}>{groupName}</h3>
-
-          {groupFlags[groupName].open && rooms.map(({roomName, maxPax}) => {
-            const beds = []
-            for(let i = 0; i < maxPax; i++) beds.push(`Bed ${i + 1}`)
-
-            return(
-              <StyledRooms key={roomName}>
-                <h3 onClick={e => setGroupFlags({
-                  ...groupFlags,
-                  [groupName]: {
-                    ...groupFlags[groupName],
-                    rooms: {
-                      ...groupFlags[groupName].rooms,
-                      [roomName]: !groupFlags[groupName].rooms[roomName]
-                    }
+          return(
+            <StyledRooms key={roomName}>
+              <h3 onClick={e => setGroupFlags({
+                ...groupFlags,
+                [groupName]: {        
+                  ...groupFlags[groupName],
+                  rooms: {
+                    ...groupFlags[groupName].rooms,
+                    [roomName]: !groupFlags[groupName].rooms[roomName]
                   }
-                })}>{roomName}</h3>
+                }
+              })}>{roomName}</h3>
 
-                {groupFlags[groupName].rooms[roomName] && beds.map(bed => (
-                  <StyledBed key={`${roomName}${bed}`}>
-                    <h3>{bed}</h3>
-                  </StyledBed>
-                ))}
-              </StyledRooms>
-            )
-          })}
-        </StyledGroup>
-      ))}
-    </StyledRoomsList>
-  )
-}
+              {groupFlags[groupName].rooms[roomName] && beds.map(bed => (
+                <StyledBed key={`${roomName}${bed}`}>
+                  <h3>{bed}</h3>
+                </StyledBed>
+              ))}
+            </StyledRooms>
+          )
+        })}
+      </StyledGroup>
+    ))}
+  </StyledRoomsList>
+)
 
 const StyledRoomsList = styled.div`
   background-color: lime;
