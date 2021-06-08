@@ -6,7 +6,7 @@ import {formatDate, normaliseDate} from '../../../util/util'
 
 import {setCurrentDate, setStartDate, setEndDate, repopulateDates} from '../../../state_management/actions/dates'
 
-const Dates = props => {
+export const Dates = props => {
   const datesEl = useRef(null)
 
   useEffect(() => datesEl.current.scrollLeft = props.scroll)
