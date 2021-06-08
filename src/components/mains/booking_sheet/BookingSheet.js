@@ -5,7 +5,7 @@ import Bookings from './Bookings'
 import Dates from './Dates'
 import RoomsList from './RoomsList'
 
-const BookingSheet = () => {
+export const BookingSheet = () => {
   const [scrollOffsets, setScrollOffsets] = useState({x: 0, y: 0})
   const [mouseCoordinates, setMouseCoordinates] = useState({x: null, y: null})
   const [hoveredCell, setHoveredCell] = useState({x: null, y: null})

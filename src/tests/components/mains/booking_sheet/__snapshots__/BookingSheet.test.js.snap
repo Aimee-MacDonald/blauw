@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render default booking sheet 1`] = `
+<styled.div
+  onMouseMove={[Function]}
+>
+  <Memo(Connect(Dates))
+    hoveredCell={null}
+    scroll={0}
+  />
+  <Memo(Connect(RoomsList))
+    hoveredCell={null}
+    scroll={0}
+  />
+  <Memo(Connect(Bookings))
+    setScrollOffsets={[Function]}
+  />
+</styled.div>
+`;
