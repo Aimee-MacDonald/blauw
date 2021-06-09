@@ -25,18 +25,35 @@ exports[`Render 'Edit Booking' Modal 1`] = `
   <input
     id="date"
     onChange={[Function]}
-    value={1623016800000}
+    type="date"
+    value="2021-06-07"
   />
   <label
     htmlFor="room"
   >
     Room:
   </label>
-  <input
+  <select
     id="room"
     onChange={[Function]}
     value={0}
-  />
+  >
+    <option
+      value={0}
+    >
+      [object Object] - 0
+    </option>
+    <option
+      value={1}
+    >
+      [object Object] - 1
+    </option>
+    <option
+      value={2}
+    >
+      [object Object] - 2
+    </option>
+  </select>
   <label
     htmlFor="nights"
   >
