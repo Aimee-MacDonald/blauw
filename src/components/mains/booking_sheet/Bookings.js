@@ -47,5 +47,5 @@ const StyledBooking = styled.div`
   cursor: pointer;
 `
 
-const mapStateToProps = ({bookings, dates}) => ({bookings: bookings, dates})
+const mapStateToProps = ({bookings, dates}) => ({bookings, dates})
 export default connect(mapStateToProps)(Bookings)

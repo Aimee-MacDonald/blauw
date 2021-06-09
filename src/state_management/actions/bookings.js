@@ -3,8 +3,8 @@ import {v4} from 'uuid'
 export const createBooking = bookingData => ({
   type: 'CREATE_BOOKING',
   payload: {
-    ...bookingData,
-    _id: v4()
+    _id: v4(),
+    ...bookingData
   }
 })
 
