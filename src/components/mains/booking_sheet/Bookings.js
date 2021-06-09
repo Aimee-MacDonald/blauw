@@ -14,7 +14,7 @@ export const Bookings = props => (
       <StyledBooking
         key={booking._id}
         dateIndex={(booking.checkin_date - props.dates.startDate) / 86400000 + 1}
-        room={booking.room}
+        roomIndex={booking.room + 1}
         nights={booking.nights}
         onClick={() => props.dispatch(selectBooking(booking._id))}
         selected={props.bookings.selectedBooking === booking._id}
@@ -37,7 +37,7 @@ const StyledBooking = styled.div`
   background-color: ${props => props.selected ? 'orangered' : 'cornflowerblue'};
   grid-column-start: ${props => props.dateIndex};
   grid-column-end: ${props => props.dateIndex + props.nights};
-  grid-row-start: ${props => props.room};
+  grid-row-start: ${props => props.roomIndex};
   display: flex;
   justify-content: center;
   align-items: center;
