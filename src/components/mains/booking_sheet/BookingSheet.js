@@ -1,14 +1,36 @@
 import React, {useState} from 'react'
 import styled from 'styled-components'
+import {connect} from 'react-redux'
+
+import {getRoomGroupings} from '../../../state_management/selectors/rooms'
 
 import Bookings from './Bookings'
 import Dates from './Dates'
 import RoomsList from './RoomsList'
 
-export const BookingSheet = () => {
+export const BookingSheet = props => {
+  let defaultRoomsFlags = []
+
+  props.groups.forEach(({groupName, rooms}) => {
+    let roomFlags = {}
+    rooms.forEach(room => roomFlags = {
+      ...roomFlags,
+      [room.roomName]: false
+    })
+
+    defaultRoomsFlags = {
+      ...defaultRoomsFlags,
+      [groupName]: {
+        open: false,
+        rooms: roomFlags
+      }
+    }
+  })
+
   const [scrollOffsets, setScrollOffsets] = useState({x: 0, y: 0})
   const [mouseCoordinates, setMouseCoordinates] = useState({x: null, y: null})
   const [hoveredCell, setHoveredCell] = useState({x: null, y: null})
+  const [roomsFlags, setRoomsFlags] = useState(defaultRoomsFlags)
 
   const handleMouseMove = e => {
     setMouseCoordinates({x: e.clientX, y: e.clientY})
@@ -25,7 +47,7 @@ export const BookingSheet = () => {
   return(
     <StyledBookingSheet onMouseMove={e => handleMouseMove(e)}>
       <Dates scroll={scrollOffsets.x} hoveredCell={hoveredCell.x}/>
-      <RoomsList scroll={scrollOffsets.y} hoveredCell={hoveredCell.y}/>
+      <RoomsList scroll={scrollOffsets.y} hoveredCell={hoveredCell.y} groupFlags={roomsFlags} setGroupFlags={setRoomsFlags}/>
       <Bookings setScrollOffsets={setScrollOffsets}/>
     </StyledBookingSheet>
   )
@@ -40,4 +62,6 @@ const StyledBookingSheet = styled.div`
   grid-template-rows: 64px 1fr;
 `
 
-export default BookingSheet
+const mapStateToProps = ({rooms}) => ({groups: getRoomGroupings(rooms)})
+
+export default connect(mapStateToProps)(BookingSheet)
