@@ -59,3 +59,10 @@ export const normaliseDate = dateObject => {
       return d
   }
 }
+
+export const formatDateForInput = date => {
+  const dateObject = new Date(date)
+  dateObject.setDate(dateObject.getDate() + 1)
+  let dt = dateObject.toISOString()
+  return dt.substring(0, dt.indexOf('T'))
+}

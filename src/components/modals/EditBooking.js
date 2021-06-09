@@ -3,12 +3,13 @@ import styled from 'styled-components'
 import {connect} from 'react-redux'
 
 import {ServerConnectionContext} from '../../util/ServerConnection'
+import {formatDateForInput, normaliseDate} from '../../util/util'
 
 import {updateBooking} from '../../state_management/actions/bookings'
 import {setModal} from '../../state_management/actions/modal'
 
 export const EditBooking = props => {
-  const [bookingDetails, editBooking] = useState(props)
+  const [bookingDetails, editBooking] = useState(props.bookingDetails)
   const connection = useContext(ServerConnectionContext)
 
   const saveBooking = e => {
@@ -27,10 +28,17 @@ export const EditBooking = props => {
       <input id='name' value={bookingDetails.booking_name} onChange={e => editBooking({...bookingDetails, booking_name: e.target.value})}/>
 
       <label htmlFor='date'>Date:</label>
-      <input id='date' value={bookingDetails.checkin_date} onChange={e => editBooking({...bookingDetails, checkin_date: parseInt(e.target.value) || 0})}/>
+      <input
+        id='date'
+        value={formatDateForInput(bookingDetails.checkin_date)}
+        onChange={e => editBooking({...bookingDetails, checkin_date: normaliseDate(e.target.value)})}
+        type='date'
+      />
 
       <label htmlFor='room'>Room:</label>
-      <input id='room' value={bookingDetails.room} onChange={e => editBooking({...bookingDetails, room: parseInt(e.target.value) || 0})}/>
+      <select id='room' value={bookingDetails.room} onChange={e => editBooking({...bookingDetails, room: parseInt(e.target.value)})}>
+        {props.rooms.map((room, index) => <option value={index} key={room}>{`${room} - ${index}`}</option>)}
+      </select>
 
       <label htmlFor='nights'>Nights:</label>
       <input id='nights' value={bookingDetails.nights} onChange={e => editBooking({...bookingDetails, nights: parseInt(e.target.value) || 0})}/>
@@ -73,5 +81,11 @@ const StyledEditBooking = styled.form`
   }
 `
 
-const mapStateToProps = ({bookings}) => bookings.bookings.filter(booking => booking._id === bookings.selectedBooking)[0]
+const mapStateToProps = ({bookings, rooms}) => {
+  return {
+    bookingDetails: bookings.bookings.filter(booking => booking._id === bookings.selectedBooking)[0],
+    rooms: rooms.map(({roomName}) => roomName)
+  }
+}
+
 export default connect(mapStateToProps)(EditBooking)
