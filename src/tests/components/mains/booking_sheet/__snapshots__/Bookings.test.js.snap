@@ -10,7 +10,7 @@ exports[`Render a booking 1`] = `
     dateIndex={27}
     nights={8}
     onClick={[Function]}
-    room={0}
+    roomIndex={1}
     selected={false}
   >
     Booking Name
@@ -28,7 +28,7 @@ exports[`Render a selected booking 1`] = `
     dateIndex={27}
     nights={8}
     onClick={[Function]}
-    room={0}
+    roomIndex={1}
     selected={true}
   >
     Booking Name
