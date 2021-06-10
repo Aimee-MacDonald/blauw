@@ -4,7 +4,8 @@ export const getMainsFlags = state => {
     checkout: false,
     stock: false,
     notes: false,
-    addRoom: false
+    addRoom: false,
+    editRoomsList: false
   }
 
   return{

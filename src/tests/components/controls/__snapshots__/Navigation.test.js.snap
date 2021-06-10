@@ -45,6 +45,11 @@ exports[`Render opened Navigation 1`] = `
     >
       Add Room
     </button>
+    <button
+      onClick={[Function]}
+    >
+      Edit Rooms List
+    </button>
   </div>
 </styled.nav>
 `;
