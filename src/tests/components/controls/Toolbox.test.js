@@ -56,3 +56,22 @@ test('Render booking sheet Toolbox with a booking selected', () => {
 
   expect(wrapper.getElement()).toMatchSnapshot()
 })
+
+test(`Render 'edit rooms list' Toolbox`, () => {
+  const navigation = {
+    "bookingSheet":false,
+    "checkout":false,
+    "stock":false,
+    "notes":false,
+    "addRoom":false,
+    "editRoomsList": true
+  }
+
+  const wrapper = shallow(<Toolbox
+    open={true}
+    navigation={navigation}
+    selectedBooking={null}
+  />)
+
+  expect(wrapper.getElement()).toMatchSnapshot()
+})

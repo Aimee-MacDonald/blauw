@@ -23,6 +23,14 @@ export const Toolbox = props => (
             {props.selectedBooking && <button onClick={() => props.dispatch(setModal('editBooking'))}>Edit Booking</button>}
           </div>
         )}
+
+        {props.navigation.editRoomsList &&
+        <div>
+          <button>Add Room</button>
+          <button>Remove Room</button>
+          <button>Edit Room</button>
+        </div>
+        }
       </div>
     )}
   </StyledToolbox>

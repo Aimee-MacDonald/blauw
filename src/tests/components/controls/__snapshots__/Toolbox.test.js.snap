@@ -1,5 +1,43 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Render 'edit rooms list' Toolbox 1`] = `
+<styled.nav
+  navigation={
+    Object {
+      "addRoom": false,
+      "bookingSheet": false,
+      "checkout": false,
+      "editRoomsList": true,
+      "notes": false,
+      "stock": false,
+    }
+  }
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  open={true}
+  selectedBooking={null}
+>
+  <button
+    onClick={[Function]}
+  >
+    Lock
+  </button>
+  <div>
+    <div>
+      <button>
+        Add Room
+      </button>
+      <button>
+        Remove Room
+      </button>
+      <button>
+        Edit Room
+      </button>
+    </div>
+  </div>
+</styled.nav>
+`;
+
 exports[`Render booking sheet Toolbox 1`] = `
 <styled.nav
   navigation={
