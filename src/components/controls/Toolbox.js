@@ -21,6 +21,8 @@ export const Toolbox = props => (
             <button onClick={() => props.dispatch(setModal('createBooking'))}>Create Booking</button>
             {props.selectedBooking && <button onClick={() => props.dispatch(setModal('deleteBooking'))}>Delete Booking</button>}
             {props.selectedBooking && <button onClick={() => props.dispatch(setModal('editBooking'))}>Edit Booking</button>}
+            {props.selectedBooking && <button onClick={() => props.dispatch(setModal('checkin'))}>Check In</button>}
+            {props.selectedBooking && <button onClick={() => props.dispatch(setModal('checkout'))}>Check Out</button>}
           </div>
         )}
 

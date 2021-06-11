@@ -5,12 +5,16 @@ import {connect} from 'react-redux'
 import CreateBooking from './modals/CreateBooking'
 import DeleteBooking from './modals/DeleteBooking'
 import EditBooking from './modals/EditBooking'
+import Checkin from './modals/Checkin'
+import Checkout from './modals/Checkout'
 
 export const ModalLayer = props => (
   <StyledModalLayer {...props}>
     {props.activeModal === 'createBooking' && <CreateBooking />}
     {props.activeModal === 'deleteBooking' && <DeleteBooking _id={props._id} />}
     {props.activeModal === 'editBooking' && <EditBooking _id={props._id}/>}
+    {props.activeModal === 'checkin' && <Checkin/>}
+    {props.activeModal === 'checkout' && <Checkout/>}
   </StyledModalLayer>
 )
 

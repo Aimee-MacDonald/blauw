@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render Checkin Modal 1`] = `
+<div>
+  <h1>
+    Check this booking in?
+  </h1>
+  <button>
+    Yes
+  </button>
+  <button
+    onClick={[Function]}
+  >
+    No
+  </button>
+</div>
+`;
