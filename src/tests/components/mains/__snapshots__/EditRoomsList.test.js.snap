@@ -1,0 +1,214 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render default Edit Rooms List Section 1`] = `
+<styled.div>
+  <div />
+  <Memo(Connect(RoomsList))
+    groupFlags={
+      Object {
+        "Camping": Object {
+          "open": false,
+          "rooms": Object {
+            "camping": false,
+          },
+        },
+        "Dorms": Object {
+          "open": false,
+          "rooms": Object {
+            "dove_dorm": false,
+            "forest_house": false,
+            "forest_house_2": false,
+            "loerie_dorm": false,
+            "owl_dorm": false,
+          },
+        },
+        "Dove": Object {
+          "open": false,
+          "rooms": Object {
+            "dove_left": false,
+            "dove_middle": false,
+            "dove_right": false,
+          },
+        },
+        "Loerie": Object {
+          "open": false,
+          "rooms": Object {
+            "loerie_family": false,
+            "loerie_left": false,
+            "loerie_right": false,
+          },
+        },
+        "Owl": Object {
+          "open": false,
+          "rooms": Object {
+            "owl_left": false,
+            "owl_lounge": false,
+            "owl_right": false,
+          },
+        },
+        "Safari Tents": Object {
+          "open": false,
+          "rooms": Object {
+            "safari_tent_1": false,
+            "safari_tent_10": false,
+            "safari_tent_11": false,
+            "safari_tent_12": false,
+            "safari_tent_2": false,
+            "safari_tent_3": false,
+            "safari_tent_4": false,
+            "safari_tent_5": false,
+            "safari_tent_6": false,
+            "safari_tent_7": false,
+            "safari_tent_8": false,
+            "safari_tent_9": false,
+          },
+        },
+      }
+    }
+    groups={
+      Array [
+        Object {
+          "groupName": "Camping",
+          "rooms": Array [
+            Object {
+              "maxPax": 80,
+              "roomName": "camping",
+            },
+          ],
+        },
+        Object {
+          "groupName": "Safari Tents",
+          "rooms": Array [
+            Object {
+              "maxPax": 2,
+              "roomName": "safari_tent_1",
+            },
+            Object {
+              "maxPax": 2,
+              "roomName": "safari_tent_2",
+            },
+            Object {
+              "maxPax": 2,
+              "roomName": "safari_tent_3",
+            },
+            Object {
+              "maxPax": 2,
+              "roomName": "safari_tent_4",
+            },
+            Object {
+              "maxPax": 2,
+              "roomName": "safari_tent_5",
+            },
+            Object {
+              "maxPax": 2,
+              "roomName": "safari_tent_6",
+            },
+            Object {
+              "maxPax": 2,
+              "roomName": "safari_tent_7",
+            },
+            Object {
+              "maxPax": 2,
+              "roomName": "safari_tent_8",
+            },
+            Object {
+              "maxPax": 2,
+              "roomName": "safari_tent_9",
+            },
+            Object {
+              "maxPax": 2,
+              "roomName": "safari_tent_10",
+            },
+            Object {
+              "maxPax": 2,
+              "roomName": "safari_tent_11",
+            },
+            Object {
+              "maxPax": 2,
+              "roomName": "safari_tent_12",
+            },
+          ],
+        },
+        Object {
+          "groupName": "Dove",
+          "rooms": Array [
+            Object {
+              "maxPax": 4,
+              "roomName": "dove_left",
+            },
+            Object {
+              "maxPax": 3,
+              "roomName": "dove_middle",
+            },
+            Object {
+              "maxPax": 4,
+              "roomName": "dove_right",
+            },
+          ],
+        },
+        Object {
+          "groupName": "Loerie",
+          "rooms": Array [
+            Object {
+              "maxPax": 2,
+              "roomName": "loerie_left",
+            },
+            Object {
+              "maxPax": 2,
+              "roomName": "loerie_right",
+            },
+            Object {
+              "maxPax": 4,
+              "roomName": "loerie_family",
+            },
+          ],
+        },
+        Object {
+          "groupName": "Owl",
+          "rooms": Array [
+            Object {
+              "maxPax": 2,
+              "roomName": "owl_left",
+            },
+            Object {
+              "maxPax": 5,
+              "roomName": "owl_lounge",
+            },
+            Object {
+              "maxPax": 2,
+              "roomName": "owl_right",
+            },
+          ],
+        },
+        Object {
+          "groupName": "Dorms",
+          "rooms": Array [
+            Object {
+              "maxPax": 8,
+              "roomName": "dove_dorm",
+            },
+            Object {
+              "maxPax": 7,
+              "roomName": "forest_house",
+            },
+            Object {
+              "maxPax": 11,
+              "roomName": "forest_house_2",
+            },
+            Object {
+              "maxPax": 7,
+              "roomName": "loerie_dorm",
+            },
+            Object {
+              "maxPax": 9,
+              "roomName": "owl_dorm",
+            },
+          ],
+        },
+      ]
+    }
+    id="rooms_list"
+    setGroupFlags={[Function]}
+  />
+</styled.div>
+`;

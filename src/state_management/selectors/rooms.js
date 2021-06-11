@@ -1,7 +1,7 @@
-export const getRoomGroupings = state => {
+export const getRoomGroupings = rooms => {
   let groups = []
 
-  state.forEach(room => {
+  rooms.forEach(room => {
     const groupIndex = groups.indexOf(groups.find(g => g.groupName === room.groupName))
 
     if(groupIndex === -1){
@@ -21,4 +21,26 @@ export const getRoomGroupings = state => {
   })
   
   return groups
+}
+
+export const getDefaultRoomFlags = groups => {
+  let defaultRoomsFlags = []
+
+  groups.forEach(({groupName, rooms}) => {
+    let roomFlags = {}
+    rooms.forEach(room => roomFlags = {
+      ...roomFlags,
+      [room.roomName]: false
+    })
+
+    defaultRoomsFlags = {
+      ...defaultRoomsFlags,
+      [groupName]: {
+        open: false,
+        rooms: roomFlags
+      }
+    }
+  })
+
+  return defaultRoomsFlags
 }

@@ -2,35 +2,17 @@ import React, {useState} from 'react'
 import styled from 'styled-components'
 import {connect} from 'react-redux'
 
-import {getRoomGroupings} from '../../../state_management/selectors/rooms'
+import {getDefaultRoomFlags, getRoomGroupings} from '../../../state_management/selectors/rooms'
 
 import Bookings from './Bookings'
 import Dates from './Dates'
 import RoomsList from './RoomsList'
 
 export const BookingSheet = props => {
-  let defaultRoomsFlags = []
-
-  props.groups.forEach(({groupName, rooms}) => {
-    let roomFlags = {}
-    rooms.forEach(room => roomFlags = {
-      ...roomFlags,
-      [room.roomName]: false
-    })
-
-    defaultRoomsFlags = {
-      ...defaultRoomsFlags,
-      [groupName]: {
-        open: false,
-        rooms: roomFlags
-      }
-    }
-  })
-
   const [scrollOffsets, setScrollOffsets] = useState({x: 0, y: 0})
   const [mouseCoordinates, setMouseCoordinates] = useState({x: null, y: null})
   const [hoveredCell, setHoveredCell] = useState({x: null, y: null})
-  const [roomsFlags, setRoomsFlags] = useState(defaultRoomsFlags)
+  const [roomsFlags, setRoomsFlags] = useState(getDefaultRoomFlags(props.groups))
 
   const handleMouseMove = e => {
     setMouseCoordinates({x: e.clientX, y: e.clientY})
