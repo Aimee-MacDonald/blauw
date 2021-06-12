@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render 'Create Room' Modal 1`] = `
+<styled.div>
+  <h1>
+    Add Room
+  </h1>
+  <label
+    htmlFor="name"
+  >
+    Name
+  </label>
+  <input
+    id="name"
+  />
+  <label
+    htmlFor="group"
+  >
+    Group
+  </label>
+  <input
+    id="group"
+  />
+  <label
+    htmlFor="minPax"
+  >
+    Min Pax
+  </label>
+  <input
+    id="minPax"
+  />
+  <label
+    htmlFor="maxPax"
+  >
+    Max Pax
+  </label>
+  <input
+    id="maxPax"
+  />
+  <button
+    onClick={[Function]}
+  >
+    Cancel
+  </button>
+  <button>
+    Save
+  </button>
+</styled.div>
+`;

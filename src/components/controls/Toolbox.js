@@ -28,9 +28,9 @@ export const Toolbox = props => (
 
         {props.navigation.editRoomsList &&
         <div>
-          <button>Add Room</button>
-          <button>Remove Room</button>
-          <button>Edit Room</button>
+          <button onClick={() => props.dispatch(setModal('createRoom'))}>Add Room</button>
+          <button onClick={() => props.dispatch(setModal('removeRoom'))}>Remove Room</button>
+          <button onClick={() => props.dispatch(setModal('editRoom'))}>Edit Room</button>
         </div>
         }
       </div>

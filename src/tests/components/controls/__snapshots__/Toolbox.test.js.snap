@@ -24,13 +24,19 @@ exports[`Render 'edit rooms list' Toolbox 1`] = `
   </button>
   <div>
     <div>
-      <button>
+      <button
+        onClick={[Function]}
+      >
         Add Room
       </button>
-      <button>
+      <button
+        onClick={[Function]}
+      >
         Remove Room
       </button>
-      <button>
+      <button
+        onClick={[Function]}
+      >
         Edit Room
       </button>
     </div>

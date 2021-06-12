@@ -7,6 +7,7 @@ import DeleteBooking from './modals/DeleteBooking'
 import EditBooking from './modals/EditBooking'
 import Checkin from './modals/Checkin'
 import Checkout from './modals/Checkout'
+import CreateRoom from './modals/CreateRoom'
 
 export const ModalLayer = props => (
   <StyledModalLayer {...props}>
@@ -15,6 +16,7 @@ export const ModalLayer = props => (
     {props.activeModal === 'editBooking' && <EditBooking _id={props._id}/>}
     {props.activeModal === 'checkin' && <Checkin/>}
     {props.activeModal === 'checkout' && <Checkout/>}
+    {props.activeModal === 'createRoom' && <CreateRoom/>}
   </StyledModalLayer>
 )
 
