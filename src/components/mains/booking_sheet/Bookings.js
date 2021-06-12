@@ -18,7 +18,10 @@ export const Bookings = props => (
         nights={booking.nights}
         onClick={() => props.dispatch(selectBooking(booking._id))}
         selected={props.bookings.selectedBooking === booking._id}
-      >{booking.booking_name}</StyledBooking>))}
+      >
+        {booking.booking_name}
+      </StyledBooking>
+    ))}
   </StyledBookings>
 )
 
