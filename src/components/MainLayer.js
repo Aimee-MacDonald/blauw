@@ -10,7 +10,6 @@ import BookingSheet from './mains/booking_sheet/BookingSheet'
 import Checkout from './mains/Checkout'
 import Stock from './mains/Stock'
 import Notes from './mains/Notes'
-import AddRoom from './mains/AddRoom'
 import EditRoomsList from './mains/EditRoomsList'
 
 export const MainLayer = props => {
@@ -26,7 +25,6 @@ export const MainLayer = props => {
       {props.checkout && <Checkout/>}
       {props.stock && <Stock/>}
       {props.notes && <Notes/>}
-      {props.addRoom && <AddRoom/>}
       {props.editRoomsList && <EditRoomsList/>}
     </StyledMainLayer>
   )

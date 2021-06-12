@@ -19,7 +19,6 @@ export const Navigation = props => (
         <button onClick={() => props.dispatch(setMain('checkout'))}>Checkout</button>
         <button onClick={() => props.dispatch(setMain('stock'))}>Stock</button>
         <button onClick={() => props.dispatch(setMain('notes'))}>Notes</button>
-        <button onClick={() => props.dispatch(setMain('addRoom'))}>Add Room</button>
         <button onClick={() => props.dispatch(setMain('editRoomsList'))}>Edit Rooms List</button>
       </div>
     )}

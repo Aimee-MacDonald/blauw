@@ -1,10 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Render Add Room 1`] = `
-<styled.div>
-  <AddRoom />
-</styled.div>
-`;
+exports[`Render Add Room 1`] = `<styled.div />`;
 
 exports[`Render Booking Sheet 1`] = `
 <styled.div>
