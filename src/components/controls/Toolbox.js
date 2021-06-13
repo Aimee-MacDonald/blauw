@@ -33,11 +33,11 @@ export const Toolbox = props => (
         )}
 
         {props.navigation.editRoomsList &&
-        <div>
-          <button onClick={() => props.dispatch(setModal('createRoom'))}>Add Room</button>
-          <button onClick={() => props.dispatch(setModal('removeRoom'))}>Remove Room</button>
-          <button onClick={() => props.dispatch(setModal('editRoom'))}>Edit Room</button>
-        </div>
+          <div>
+            <button onClick={() => props.dispatch(setModal('createRoom'))}>Add Room</button>
+            <button onClick={() => props.dispatch(setModal('removeRoom'))}>Remove Room</button>
+            <button onClick={() => props.dispatch(setModal('editRoom'))}>Edit Room</button>
+          </div>
         }
       </div>
     )}

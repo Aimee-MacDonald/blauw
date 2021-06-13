@@ -1,15 +1,19 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import {connect} from 'react-redux'
+
+import {ServerConnectionContext} from '../../util/ServerConnection'
 
 import {setModal} from '../../state_management/actions/modal'
 import {checkIn} from '../../state_management/actions/bookings'
 import {getSelectedBooking} from '../../state_management/selectors/bookings'
 
 export const Checkin = props => {
+  const connection = useContext(ServerConnectionContext)
+
   const checkBookingIn = () => {
     props.dispatch(checkIn(props.booking._id))
+    connection.dispatch({reducer: 'bookings', action: checkIn(props.booking._id)})
     props.dispatch(setModal())
-    // Check in on server as well
   }
 
   return(
