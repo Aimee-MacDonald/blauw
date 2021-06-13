@@ -48,6 +48,22 @@ export default (state = defaultState, {type, payload}) => {
           }
         })
       }
+
+    case 'CHECKOUT_BOOKING':
+      return{
+        ...state,
+        bookings: state.bookings.map(booking => {
+          if(booking._id === payload){
+            return{
+              ...booking,
+              status: 'checked_out',
+              checked_in: false
+            }
+          } else {
+            return booking
+          }
+        })
+      }
       
     default:
       return state

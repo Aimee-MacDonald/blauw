@@ -29,3 +29,8 @@ export const checkIn = bookingId => ({
   type: 'CHECKIN_BOOKING',
   payload: bookingId
 })
+
+export const checkOut = bookingId => ({
+  type: 'CHECKOUT_BOOKING',
+  payload: bookingId
+})

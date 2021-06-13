@@ -110,7 +110,7 @@ test('Check booking in', () => {
   }]}
 
   const action = {
-    type: 'UPDATE_BOOKING',
+    type: 'CHECKIN_BOOKING',
     payload: '123abc'
   }
 
@@ -124,7 +124,40 @@ test('Check booking in', () => {
         checkin_date: 1,
         room: 2,
         nights: 3,
-        status: 'confirmed',
+        status: 'checked_in',
+        checked_in: true
+      }
+    ]
+  })
+})
+
+test('Check booking out', () => {
+  const state = {bookings: [{
+    _id: '123abc',
+    booking_name: 'name',
+    checkin_date: 1,
+    room: 2,
+    nights: 3,
+    status: 'checked_in',
+    checked_in: true
+  }]}
+
+  const action = {
+    type: 'CHECKOUT_BOOKING',
+    payload: '123abc'
+  }
+
+  const result = bookingsReducer(state, action)
+
+  expect(result).toEqual( {
+    bookings: [
+      {
+        _id: '123abc',
+        booking_name: 'name',
+        checkin_date: 1,
+        room: 2,
+        nights: 3,
+        status: 'checked_out',
         checked_in: false
       }
     ]

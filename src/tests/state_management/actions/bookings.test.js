@@ -1,4 +1,4 @@
-import {checkIn, createBooking, deleteBooking, selectBooking, updateBooking} from '../../../state_management/actions/bookings'
+import {checkIn, checkOut, createBooking, deleteBooking, selectBooking, updateBooking} from '../../../state_management/actions/bookings'
 
 test(`Generate a 'create booking' action`, () => {
   const bookingData = {
@@ -61,6 +61,14 @@ test(`Generate a 'Checkin' action`, () => {
   const action = checkIn('abc123')
   expect(action).toEqual({
     type: 'CHECKIN_BOOKING',
+    payload: 'abc123'
+  })
+})
+
+test(`Generate a 'Checkout' action`, () => {
+  const action = checkOut('abc123')
+  expect(action).toEqual({
+    type: 'CHECKOUT_BOOKING',
     payload: 'abc123'
   })
 })
