@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import {connect} from 'react-redux'
 
 import {selectBooking} from '../../../state_management/actions/bookings'
+import {shortenText} from '../../../util/util'
 
 export const Bookings = props => (
   <StyledBookings
@@ -19,7 +20,7 @@ export const Bookings = props => (
         onClick={() => props.dispatch(selectBooking(booking._id))}
         selected={props.bookings.selectedBooking === booking._id}
       >
-        {booking.booking_name}
+        {shortenText(booking.booking_name, booking.nights * 8)}
       </StyledBooking>
     ))}
   </StyledBookings>

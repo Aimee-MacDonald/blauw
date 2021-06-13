@@ -66,3 +66,11 @@ export const formatDateForInput = date => {
   let dt = dateObject.toISOString()
   return dt.substring(0, dt.indexOf('T'))
 }
+
+export const shortenText = (text, maxLength) => {
+  if(text.length > maxLength){
+    return `${text.substring(0, maxLength)}...`
+  } else {
+    return text
+  }
+}
