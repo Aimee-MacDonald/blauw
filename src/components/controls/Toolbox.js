@@ -5,6 +5,7 @@ import {connect} from 'react-redux'
 import {toggleControl, toggleControlLock} from '../../state_management/actions/controls'
 import {setModal} from '../../state_management/actions/modal'
 import {getMainsFlags} from '../../state_management/selectors/navigation'
+import {isToday} from '../../util/util'
 
 export const Toolbox = props => (
   <StyledToolbox {...props}
@@ -19,10 +20,14 @@ export const Toolbox = props => (
         {props.navigation.bookingSheet && (
           <div>
             <button onClick={() => props.dispatch(setModal('createBooking'))}>Create Booking</button>
-            {props.selectedBooking && <button onClick={() => props.dispatch(setModal('deleteBooking'))}>Delete Booking</button>}
-            {props.selectedBooking && <button onClick={() => props.dispatch(setModal('editBooking'))}>Edit Booking</button>}
-            {props.selectedBooking && <button onClick={() => props.dispatch(setModal('checkin'))}>Check In</button>}
-            {props.selectedBooking && <button onClick={() => props.dispatch(setModal('checkout'))}>Check Out</button>}
+            {props.selectedBooking && (
+              <div>
+                <button onClick={() => props.dispatch(setModal('deleteBooking'))}>Delete Booking</button>
+                <button onClick={() => props.dispatch(setModal('editBooking'))}>Edit Booking</button>
+                {isToday(props.selectedBooking.checkin_date) && <button onClick={() => props.dispatch(setModal('checkin'))}>Check In</button>}
+                <button onClick={() => props.dispatch(setModal('checkout'))}>Check Out</button>
+              </div>
+            )}
           </div>
         )}
 
@@ -50,10 +55,12 @@ const StyledToolbox = styled.nav`
   box-shadow: ${props => props.open ? '-0.2rem 0 1rem 0 #248' : 0};
 `
 
-const mapStateToProps = ({controls, navigation, bookings}) => ({
-  open: controls.right.open,
-  navigation : getMainsFlags(navigation),
-  selectedBooking: bookings.selectedBooking
-})
+const mapStateToProps = ({controls, navigation, bookings}) => {
+  return{
+    open: controls.right.open,
+    navigation : getMainsFlags(navigation),
+    selectedBooking: bookings.bookings.filter(booking => booking._id === bookings.selectedBooking)[0]
+  }
+}
 
 export default connect(mapStateToProps)(Toolbox)

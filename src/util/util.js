@@ -67,6 +67,10 @@ export const formatDateForInput = date => {
   return dt.substring(0, dt.indexOf('T'))
 }
 
+export const isToday = date => {
+  return normaliseDate(new Date) === date
+}
+
 export const shortenText = (text, maxLength) => {
   if(text.length > maxLength){
     return `${text.substring(0, maxLength)}...`

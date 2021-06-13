@@ -105,26 +105,23 @@ exports[`Render booking sheet Toolbox with a booking selected 1`] = `
       >
         Create Booking
       </button>
-      <button
-        onClick={[Function]}
-      >
-        Delete Booking
-      </button>
-      <button
-        onClick={[Function]}
-      >
-        Edit Booking
-      </button>
-      <button
-        onClick={[Function]}
-      >
-        Check In
-      </button>
-      <button
-        onClick={[Function]}
-      >
-        Check Out
-      </button>
+      <div>
+        <button
+          onClick={[Function]}
+        >
+          Delete Booking
+        </button>
+        <button
+          onClick={[Function]}
+        >
+          Edit Booking
+        </button>
+        <button
+          onClick={[Function]}
+        >
+          Check Out
+        </button>
+      </div>
     </div>
   </div>
 </styled.nav>
