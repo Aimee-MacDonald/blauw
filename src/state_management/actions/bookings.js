@@ -4,7 +4,9 @@ export const createBooking = bookingData => ({
   type: 'CREATE_BOOKING',
   payload: {
     _id: v4(),
-    ...bookingData
+    ...bookingData,
+    status: 'confirmed',
+    checked_in: false
   }
 })
 
@@ -21,4 +23,9 @@ export const deleteBooking = bookingId => ({
 export const updateBooking = bookingData => ({
   type: 'UPDATE_BOOKING',
   payload: bookingData
+})
+
+export const checkIn = bookingId => ({
+  type: 'CHECKIN_BOOKING',
+  payload: bookingId
 })

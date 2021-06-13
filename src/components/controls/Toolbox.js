@@ -6,6 +6,7 @@ import {toggleControl, toggleControlLock} from '../../state_management/actions/c
 import {setModal} from '../../state_management/actions/modal'
 import {getMainsFlags} from '../../state_management/selectors/navigation'
 import {isToday} from '../../util/util'
+import {getSelectedBooking} from '../../state_management/selectors/bookings'
 
 export const Toolbox = props => (
   <StyledToolbox {...props}
@@ -24,8 +25,8 @@ export const Toolbox = props => (
               <div>
                 <button onClick={() => props.dispatch(setModal('deleteBooking'))}>Delete Booking</button>
                 <button onClick={() => props.dispatch(setModal('editBooking'))}>Edit Booking</button>
-                {isToday(props.selectedBooking.checkin_date) && <button onClick={() => props.dispatch(setModal('checkin'))}>Check In</button>}
-                <button onClick={() => props.dispatch(setModal('checkout'))}>Check Out</button>
+                {isToday(props.selectedBooking.checkin_date) && !props.selectedBooking.checked_in && <button onClick={() => props.dispatch(setModal('checkin'))}>Check In</button>}
+                {props.selectedBooking.checked_in && <button onClick={() => props.dispatch(setModal('checkout'))}>Check Out</button>}
               </div>
             )}
           </div>
@@ -59,7 +60,7 @@ const mapStateToProps = ({controls, navigation, bookings}) => {
   return{
     open: controls.right.open,
     navigation : getMainsFlags(navigation),
-    selectedBooking: bookings.bookings.filter(booking => booking._id === bookings.selectedBooking)[0]
+    selectedBooking: getSelectedBooking(bookings)
   }
 }
 

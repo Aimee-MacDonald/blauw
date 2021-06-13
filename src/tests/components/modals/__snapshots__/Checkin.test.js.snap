@@ -5,7 +5,9 @@ exports[`Render Checkin Modal 1`] = `
   <h1>
     Check this booking in?
   </h1>
-  <button>
+  <button
+    onClick={[Function]}
+  >
     Yes
   </button>
   <button

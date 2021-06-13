@@ -116,11 +116,6 @@ exports[`Render booking sheet Toolbox with a booking selected 1`] = `
         >
           Edit Booking
         </button>
-        <button
-          onClick={[Function]}
-        >
-          Check Out
-        </button>
       </div>
     </div>
   </div>

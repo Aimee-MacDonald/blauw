@@ -97,3 +97,36 @@ test('Update a booking', () => {
     nights: 4
   }]})
 })
+
+test('Check booking in', () => {
+  const state = {bookings: [{
+    _id: '123abc',
+    booking_name: 'name',
+    checkin_date: 1,
+    room: 2,
+    nights: 3,
+    status: 'confirmed',
+    checked_in: false
+  }]}
+
+  const action = {
+    type: 'UPDATE_BOOKING',
+    payload: '123abc'
+  }
+
+  const result = bookingsReducer(state, action)
+  
+  expect(result).toEqual({
+    bookings: [
+      {
+        _id: '123abc',
+        booking_name: 'name',
+        checkin_date: 1,
+        room: 2,
+        nights: 3,
+        status: 'confirmed',
+        checked_in: false
+      }
+    ]
+  })
+})
