@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render 'Edit Room' Modal 1`] = `
+<div>
+  <h1>
+    Edit Room
+  </h1>
+  <button
+    onClick={[Function]}
+  >
+    Cancel
+  </button>
+  <button>
+    Save
+  </button>
+</div>
+`;

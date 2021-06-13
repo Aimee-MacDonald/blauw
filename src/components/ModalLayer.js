@@ -9,6 +9,7 @@ import Checkin from './modals/Checkin'
 import Checkout from './modals/Checkout'
 import CreateRoom from './modals/CreateRoom'
 import RemoveRoom from './modals/RemoveRoom'
+import EditRoom from './modals/EditRoom'
 
 export const ModalLayer = props => (
   <StyledModalLayer {...props}>
@@ -19,6 +20,7 @@ export const ModalLayer = props => (
     {props.activeModal === 'checkout' && <Checkout/>}
     {props.activeModal === 'createRoom' && <CreateRoom/>}
     {props.activeModal === 'removeRoom' && <RemoveRoom/>}
+    {props.activeModal === 'editRoom' && <EditRoom/>}
   </StyledModalLayer>
 )
 
