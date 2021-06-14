@@ -27,7 +27,7 @@ export const Toolbox = props => (
                 <button onClick={() => props.dispatch(setModal('editBooking'))}>Edit Booking</button>
                 {isToday(props.selectedBooking.checkin_date) && !props.selectedBooking.checked_in && props.selectedBooking.status === 'confirmed' && <button onClick={() => props.dispatch(setModal('checkin'))}>Check In</button>}
                 {props.selectedBooking.checked_in && <button onClick={() => props.dispatch(setModal('checkout'))}>Check Out</button>}
-                {props.selectedBooking.status === 'checked_out' && <button>Undo Check Out</button>}
+                {props.selectedBooking.status === 'checked_out' && <button onClick={() => props.dispatch(setModal('undoCheckout'))}>Undo Check Out</button>}
               </div>
             )}
           </div>

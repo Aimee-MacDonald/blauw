@@ -163,3 +163,36 @@ test('Check booking out', () => {
     ]
   })
 })
+
+test('Undo booking checkout', () => {
+  const state = {bookings: [{
+    _id: '123abc',
+    booking_name: 'name',
+    checkin_date: 1,
+    room: 2,
+    nights: 3,
+    status: 'checked_out',
+    checked_in: false
+  }]}
+
+  const action = {
+    type: 'UNDO_CHECKOUT',
+    payload: '123abc'
+  }
+
+  const result = bookingsReducer(state, action)
+
+  expect(result).toEqual( {
+    bookings: [       
+      {
+        _id: '123abc',
+        booking_name: 'name',
+        checkin_date: 1,
+        room: 2,
+        nights: 3,
+        status: 'checked_in',
+        checked_in: true
+      }
+    ]
+  })
+})

@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render 'Undo Checkout' Modal 1`] = `
+<div>
+  <h1>
+    Undo Checkout
+  </h1>
+  <button
+    onClick={[Function]}
+  >
+    Cancel
+  </button>
+  <button
+    onClick={[Function]}
+  >
+    Undo Checkout
+  </button>
+</div>
+`;

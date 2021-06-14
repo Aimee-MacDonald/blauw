@@ -64,6 +64,22 @@ export default (state = defaultState, {type, payload}) => {
           }
         })
       }
+
+    case 'UNDO_CHECKOUT':
+      return{
+        ...state,
+        bookings: state.bookings.map(booking => {
+          if(booking._id === payload){
+            return{
+              ...booking,
+              status: 'checked_in',
+              checked_in: true
+            }
+          } else {
+            return booking
+          }
+        })
+      }
       
     default:
       return state
