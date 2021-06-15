@@ -63,17 +63,34 @@ export const AccommodationDetails = () => {
         </StyledRoomDetails>
       ))}
 
-      <button onClick={addRoom}>Add Room</button>
-      {selectedRoom && <button onClick={addGuest}>Add Guest</button>}
+      <div id='addButtons'>
+        <button type='button' onClick={addRoom}>Add Room</button>
+        {selectedRoom && <button type='button' onClick={addGuest}>Add Guest</button>}
+      </div>
 
-      <p>Total: R</p>
+      <p id='total'>Total: R</p>
     </StyledAccommodationDetails>
   )
 }
 
 const StyledAccommodationDetails = styled.div`
+  grid-column-start: 1;
+  grid-column-end: 5;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
+  width 64rem;
+  text-align: center;
+
+  #addButtons{
+    grid-column-start: 1;
+    grid-column-end: 3;
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  #total{
+    grid-column-start: 6;
+  }
 `
 
 const StyledRoomDetails = styled.div`
