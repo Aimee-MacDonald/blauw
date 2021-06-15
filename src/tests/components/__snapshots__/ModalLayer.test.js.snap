@@ -6,7 +6,7 @@ exports[`Render 'Create Booking' Modal 1`] = `
   activeModal="createBooking"
   modalActive={true}
 >
-  <Memo(Connect(CreateBooking)) />
+  <CreateBooking />
 </styled.div>
 `;
 

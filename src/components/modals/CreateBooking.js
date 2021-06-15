@@ -1,37 +1,71 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const CreateBooking = () => (
-  <StyledCreateBooking>
-    <h1>Create Booking</h1>
+export const CreateBooking = () => {
+  const bookingData = {
+    name: 'Booking Name',
+    rooms: [{
+      name: 'Room 1',
+      guests: [{
+        name: 'Guest 1',
+        checkin_date: 'Checkin',
+        checkout_date: 'Checkout',
+        nights: 'Nights',
+        price: 'Price'
+      }]
+    }]
+  }
 
-    <div id='labeled_booking_name'>
-      <label htmlFor='booking_name'>Booking name:</label>
-      <input id='booking_name'/>
-    </div>
+  return(
+    <StyledCreateBooking>
+      <h1>Create Booking</h1>
 
-    <div id='accommodation_details'>
-      <p>Room</p>
-      <p>Guest</p>
-      <p>Arrival</p>
-      <p>Departure</p>
-      <p>Nights</p>
-      <p>Price</p>
-    </div>
+      <div id='labeled_booking_name'>
+        <label htmlFor='booking_name'>Booking name:</label>
+        <input id='booking_name'/>
+      </div>
 
-    <button>Add Room</button>
-    <button>Add Guest</button>
+      <div id='accommodation_details'>
+        <div>
+          <p>Room</p>
+          <p>Guest</p>
+          <p>Arrival</p>
+          <p>Departure</p>
+          <p>Nights</p>
+          <p>Price</p>
+        </div>
 
-    <p id='total'>Total: R</p>
+        {bookingData.rooms.map((room, i) => (
+          <div key={`r${i}`}>
+            <input/>
 
-    <textarea/>
+            {room.guests.map((guest, j) => (
+              <section key={`g${j}`}>
+                <input/>
+                <input type='date'/>
+                <input type='date'/>
+                <input/>
+                <p>{guest.price}</p>
+              </section>
+            ))}
+          </div>
+        ))}
+      </div>
 
-    <div id='form_controls'>
-      <button>Create Booking</button>
-      <button>Cancel</button>
-    </div>
-  </StyledCreateBooking>
-)
+      <button>Add Room</button>
+      <button>Add Guest</button>
+
+      <p id='total'>Total: R</p>
+
+      <textarea/>
+
+      <div id='form_controls'>
+        <button>Create Booking</button>
+        <button>Cancel</button>
+      </div>
+    </StyledCreateBooking>
+  )
+}
 
 const StyledCreateBooking = styled.form`
   background-color: cornflowerblue;
@@ -54,11 +88,23 @@ const StyledCreateBooking = styled.form`
   #accommodation_details{
     grid-column-start: 1;
     grid-column-end: 7;
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
     height: 8rem;
-    justify-items: center;
     margin-top: 1rem;
+    text-align: center;
+
+    div{
+      grid-column-start: 1;
+      grid-column-end: 7;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+
+      section{
+        grid-column-start: 2;
+        grid-column-end: 7;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+      }
+    }
   }
 
   #total{
