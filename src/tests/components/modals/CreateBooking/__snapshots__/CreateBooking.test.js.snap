@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render default 'Create Booking' modal 1`] = `
+<div>
+  <h1>
+    Create Booking
+  </h1>
+  <label
+    htmlFor="booking_name"
+  >
+    Booking Name
+  </label>
+  <input
+    id="booking_name"
+  />
+  <AccommodationDetails />
+  <label
+    htmlFor="notes"
+  >
+    Notes
+  </label>
+  <textarea />
+  <button>
+    Save
+  </button>
+  <button>
+    Cancel
+  </button>
+</div>
+`;

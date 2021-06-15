@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import {connect} from 'react-redux'
 
-import CreateBooking from './modals/CreateBooking'
+import CreateBooking from './modals/CreateBooking/CreateBooking'
 import DeleteBooking from './modals/DeleteBooking'
 import EditBooking from './modals/EditBooking'
 import Checkin from './modals/Checkin'
