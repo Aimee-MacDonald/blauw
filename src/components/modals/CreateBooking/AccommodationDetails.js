@@ -1,7 +1,8 @@
 import React, {useState} from 'react'
 import styled from 'styled-components'
+import {connect} from 'react-redux'
 
-export const AccommodationDetails = () => {
+export const AccommodationDetails = props => {
   const [rooms, setRooms] = useState([])
   const [selectedRoom, selectRoom] = useState()
 
@@ -45,10 +46,7 @@ export const AccommodationDetails = () => {
       {rooms.map(room => (
         <StyledRoomDetails>
           <select>
-            <option>Room 1</option>
-            <option>Room 2</option>
-            <option>Room 3</option>
-            <option>Room 4</option>
+            {props.roomOptions.map(roomOption => <option>{roomOption.roomName}</option>)}
           </select>
 
           {room.guests.map(guest => (
@@ -107,4 +105,6 @@ const StyledGuestDetails = styled.div`
   grid-template-columns: repeat(5, 1fr);
 `
 
-export default AccommodationDetails
+const mapStateToProps = ({rooms}) => ({roomOptions: rooms})
+
+export default connect(mapStateToProps)(AccommodationDetails)

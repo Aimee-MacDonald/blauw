@@ -17,7 +17,7 @@ exports[`Render default 'Create Booking' modal 1`] = `
       id="booking_name"
     />
   </div>
-  <AccommodationDetails />
+  <Memo(Connect(AccommodationDetails)) />
   <div
     id="labeled_notes"
   >
