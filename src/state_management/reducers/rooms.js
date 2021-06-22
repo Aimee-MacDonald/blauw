@@ -11,13 +11,9 @@ export default (state = [], {type, payload}) => {
 
     case 'UPDATE_ROOM':
       return state.map(room => {
-        if(room._id === payload._id){
-          return{
-            ...room,
-            ...payload
-          }
-        } else {
-          return room
+        return room._id !== payload._id ? room : {
+          ...room,
+          ...payload
         }
       })
 

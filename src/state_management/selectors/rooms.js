@@ -1,43 +1,57 @@
+import rooms from "../reducers/rooms"
+
 export const getRoomGroupings = rooms => {
   let groups = []
 
-  rooms.forEach(room => {
-    const groupIndex = groups.indexOf(groups.find(g => g.groupName === room.groupName))
+  rooms.forEach(({_id, name, group, shared, maxPax, basePrice, personPrice, showBeds}) => {
+    const groupIndex = groups.indexOf(groups.find(g => g.name === group))
 
     if(groupIndex === -1){
       groups.push({
-        groupName: room.groupName,
+        name: group,
         rooms: [{
-          roomName: room.roomName,
-          maxPax: room.maxPax
+          _id,
+          name,
+          shared,
+          maxPax,
+          basePrice,
+          personPrice,
+          showBeds
         }]
       })
     } else {
       groups[groupIndex].rooms.push({
-        roomName: room.roomName,
-        maxPax: room.maxPax
+        _id,
+        name,
+        shared,
+        maxPax,
+        basePrice,
+        personPrice,
+        showBeds
       })
     }
   })
-  
+
   return groups
 }
 
 export const getDefaultRoomFlags = groups => {
-  let defaultRoomsFlags = []
-
-  groups.forEach(({groupName, rooms}) => {
-    let roomFlags = {}
-    rooms.forEach(room => roomFlags = {
-      ...roomFlags,
-      [room.roomName]: false
+  let defaultRoomsFlags = {}
+  
+  groups.forEach(group => {
+    let rooms = {}
+    group.rooms.forEach(room => {
+      rooms = {
+        ...rooms,
+        [room.name]: false
+      }
     })
 
     defaultRoomsFlags = {
       ...defaultRoomsFlags,
-      [groupName]: {
+      [group.name]: {
         open: false,
-        rooms: roomFlags
+        rooms
       }
     }
   })

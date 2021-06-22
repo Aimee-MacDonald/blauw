@@ -6,61 +6,10 @@ exports[`Render default Edit Rooms List Section 1`] = `
   <Memo(Connect(RoomsList))
     groupFlags={
       Object {
-        "Camping": Object {
+        "undefined": Object {
           "open": false,
           "rooms": Object {
-            "camping": false,
-          },
-        },
-        "Dorms": Object {
-          "open": false,
-          "rooms": Object {
-            "dove_dorm": false,
-            "forest_house": false,
-            "forest_house_2": false,
-            "loerie_dorm": false,
-            "owl_dorm": false,
-          },
-        },
-        "Dove": Object {
-          "open": false,
-          "rooms": Object {
-            "dove_left": false,
-            "dove_middle": false,
-            "dove_right": false,
-          },
-        },
-        "Loerie": Object {
-          "open": false,
-          "rooms": Object {
-            "loerie_family": false,
-            "loerie_left": false,
-            "loerie_right": false,
-          },
-        },
-        "Owl": Object {
-          "open": false,
-          "rooms": Object {
-            "owl_left": false,
-            "owl_lounge": false,
-            "owl_right": false,
-          },
-        },
-        "Safari Tents": Object {
-          "open": false,
-          "rooms": Object {
-            "safari_tent_1": false,
-            "safari_tent_10": false,
-            "safari_tent_11": false,
-            "safari_tent_12": false,
-            "safari_tent_2": false,
-            "safari_tent_3": false,
-            "safari_tent_4": false,
-            "safari_tent_5": false,
-            "safari_tent_6": false,
-            "safari_tent_7": false,
-            "safari_tent_8": false,
-            "safari_tent_9": false,
+            "undefined": false,
           },
         },
       }
