@@ -20,7 +20,7 @@ export const CreateRoom = props => {
       maxPax: e.target.maxPax.value,
       basePrice: e.target.basePrice.value,
       personPrice: e.target.personPrice.value,
-      showBeds: e.target.showBeds.checked,
+      showBeds: e.target.showBeds.checked
     })
 
     props.dispatch(createRoomAction)

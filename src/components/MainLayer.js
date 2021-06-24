@@ -17,6 +17,7 @@ export const MainLayer = props => {
 
   useEffect(() => {
     connection.dispatch({reducer: 'bookings', action: {type: 'REFRESH_BOOKINGS'}})
+    connection.dispatch({reducer: 'rooms', action: {type: 'REFRESH_ROOMS'}})
   }, [])
 
   return(
