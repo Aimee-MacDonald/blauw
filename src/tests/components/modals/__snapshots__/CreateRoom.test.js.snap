@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Render 'Create Room' Modal 1`] = `
-<styled.div>
+<styled.form
+  onSubmit={[Function]}
+>
   <h1>
     Add Room
   </h1>
@@ -22,12 +24,13 @@ exports[`Render 'Create Room' Modal 1`] = `
     id="group"
   />
   <label
-    htmlFor="minPax"
+    htmlFor="shared"
   >
-    Min Pax
+    Shared
   </label>
   <input
-    id="minPax"
+    id="shared"
+    type="checkbox"
   />
   <label
     htmlFor="maxPax"
@@ -37,13 +40,41 @@ exports[`Render 'Create Room' Modal 1`] = `
   <input
     id="maxPax"
   />
+  <label
+    htmlFor="basePrice"
+  >
+    Base Price
+  </label>
+  <input
+    id="basePrice"
+  />
+  <label
+    htmlFor="personPrice"
+  >
+    Person Price
+  </label>
+  <input
+    id="personPrice"
+  />
+  <label
+    htmlFor="showBeds"
+  >
+    Show Beds
+  </label>
+  <input
+    id="showBeds"
+    type="checkbox"
+  />
   <button
     onClick={[Function]}
+    type="reset"
   >
     Cancel
   </button>
-  <button>
+  <button
+    type="submit"
+  >
     Save
   </button>
-</styled.div>
+</styled.form>
 `;

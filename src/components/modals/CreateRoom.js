@@ -4,28 +4,45 @@ import styled from 'styled-components'
 
 import {setModal} from '../../state_management/actions/modal'
 
-export const CreateRoom = props => (
-  <StyledCreateRoom>
-    <h1>Add Room</h1>
+export const CreateRoom = props => {
+  const saveRoom = e => {
+    e.preventDefault()
+    console.log('Save Room')
+    props.dispatch(setModal())
+  }
 
-    <label htmlFor='name'>Name</label>
-    <input id='name'/>
+  return(
+    <StyledCreateRoom onSubmit={saveRoom}>
+      <h1>Add Room</h1>
 
-    <label htmlFor='group'>Group</label>
-    <input id='group'/>
+      <label htmlFor='name'>Name</label>
+      <input id='name'/>
 
-    <label htmlFor='minPax'>Min Pax</label>
-    <input id='minPax'/>
+      <label htmlFor='group'>Group</label>
+      <input id='group'/>
 
-    <label htmlFor='maxPax'>Max Pax</label>
-    <input id='maxPax'/>
+      <label htmlFor='shared'>Shared</label>
+      <input id='shared' type='checkbox'/>
 
-    <button onClick={() => props.dispatch(setModal())}>Cancel</button>
-    <button>Save</button>
-  </StyledCreateRoom>
-)
+      <label htmlFor='maxPax'>Max Pax</label>
+      <input id='maxPax'/>
 
-const StyledCreateRoom = styled.div`
+      <label htmlFor='basePrice'>Base Price</label>
+      <input id='basePrice'/>
+
+      <label htmlFor='personPrice'>Person Price</label>
+      <input id='personPrice'/>
+
+      <label htmlFor='showBeds'>Show Beds</label>
+      <input id='showBeds' type='checkbox'/>
+
+      <button type='reset' onClick={() => props.dispatch(setModal())}>Cancel</button>
+      <button type='submit'>Save</button>
+    </StyledCreateRoom>
+  )
+}
+
+const StyledCreateRoom = styled.form`
   display: grid;
   grid-template-columns: 1fr 1fr;
   padding: 1.6rem;
