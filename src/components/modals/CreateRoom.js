@@ -1,13 +1,30 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import {connect} from 'react-redux'
 import styled from 'styled-components'
+
+import {ServerConnectionContext} from '../../util/ServerConnection'
+import {createRoom} from '../../state_management/actions/rooms'
 
 import {setModal} from '../../state_management/actions/modal'
 
 export const CreateRoom = props => {
+  const server = useContext(ServerConnectionContext)
+
   const saveRoom = e => {
     e.preventDefault()
-    console.log('Save Room')
+
+    const createRoomAction = createRoom({
+      name: e.target.name.value,
+      group: e.target.group.value,
+      shared: e.target.shared.checked,
+      maxPax: e.target.maxPax.value,
+      basePrice: e.target.basePrice.value,
+      personPrice: e.target.personPrice.value,
+      showBeds: e.target.showBeds.checked,
+    })
+
+    props.dispatch(createRoomAction)
+    server.dispatch({reducer: 'rooms', action: createRoomAction})
     props.dispatch(setModal())
   }
 
