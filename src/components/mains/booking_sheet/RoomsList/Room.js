@@ -1,4 +1,5 @@
 import React from 'react'
+import styled from 'styled-components'
 
 export const Room = props => {
   const beds = []
@@ -10,13 +11,26 @@ export const Room = props => {
   }
 
   return(
-    <div>
+    <StyledRoom {...props}>
       <h3 onClick={props.toggleRoom}>{props.room.name}</h3>
+
       {props.room.showBeds && props.roomFlag &&
-        beds.map((bed, i) => <p key={`${props.room._id}_${i}`}>{bed}</p>)
+        beds.map((bed, i) => (
+          <StyledBed key={`${props.room._id}_${i}`}>
+            <h3>{bed}</h3>
+          </StyledBed>
+        ))
       }
-    </div>
+    </StyledRoom>
   )
 }
+
+const StyledRoom = styled.div`
+  background-color: red;
+`
+
+const StyledBed = styled.div`
+  background-color: green;
+`
 
 export default Room

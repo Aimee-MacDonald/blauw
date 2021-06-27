@@ -58,5 +58,15 @@ export const getDefaultRoomFlags = groups => {
 }
 
 export const getHoveredRoom = (groups, groupFlags, hoveredCell) => {
-  return hoveredCell;
+  const flatList = []
+
+  groups.forEach(group => {
+    flatList.push(group.name)
+
+    group.rooms.forEach(room => {
+      flatList.push(room._id)
+    })
+  })
+
+  console.log(flatList)
 }

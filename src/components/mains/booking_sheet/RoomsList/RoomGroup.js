@@ -1,9 +1,10 @@
 import React from 'react'
+import styled from 'styled-components'
 
 import Room from './Room'
 
 export const RoomGroup = props => (
-  <div>
+  <StyledRoomGroup {...props}>
     {props.group && props.group.name !== 'ungrouped' &&
       <h3 onClick={props.toggleGroup}>{props.group.name}</h3>
     }
@@ -14,9 +15,20 @@ export const RoomGroup = props => (
         room={room}
         roomFlag={props.groupFlags.rooms[room.name]}
         toggleRoom={() => props.toggleRoom(room.name)}
+        hoveredRoom={props.hoveredRoom}
       />
     ))}
-  </div>
+  </StyledRoomGroup>
 )
+
+const StyledRoomGroup = styled.div`
+  background-color: blue;
+
+  h3{
+    height: 32px;
+    display: grid;
+    place-items: center center;
+  }
+`
 
 export default RoomGroup
