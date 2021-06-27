@@ -6,7 +6,7 @@ import {getDefaultRoomFlags, getRoomGroupings} from '../../../state_management/s
 
 import Bookings from './Bookings'
 import Dates from './Dates'
-import RoomsList from './RoomsList'
+import RoomsList from './RoomsList/RoomsList'
 
 export const BookingSheet = props => {
   const [scrollOffsets, setScrollOffsets] = useState({x: 0, y: 0})

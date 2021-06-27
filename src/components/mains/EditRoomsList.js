@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 import {getDefaultRoomFlags, getRoomGroupings} from '../../state_management/selectors/rooms'
 
-import RoomsList from './booking_sheet/RoomsList'
+import RoomsList from './booking_sheet/RoomsList/RoomsList'
 
 export const EditRoomsList = ({groups}) => {
   const [groupFlags, setGroupFlags] = useState(getDefaultRoomFlags(groups))

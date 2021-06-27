@@ -1,5 +1,3 @@
-import rooms from "../reducers/rooms"
-
 export const getRoomGroupings = rooms => {
   let groups = []
 
@@ -50,11 +48,15 @@ export const getDefaultRoomFlags = groups => {
     defaultRoomsFlags = {
       ...defaultRoomsFlags,
       [group.name]: {
-        open: false,
+        open: group.name === 'ungrouped' ? true : false,
         rooms
       }
     }
   })
 
   return defaultRoomsFlags
+}
+
+export const getHoveredRoom = (groups, groupFlags, hoveredCell) => {
+  return hoveredCell;
 }

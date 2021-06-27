@@ -22,6 +22,28 @@ test(`Generate a 'Create Room' action`, () => {
   })
 })
 
+test(`Generate an ungrouped 'Create Room' action`, () => {
+  const action = createRoom({
+    name: 'name',
+    group: '',
+    shared: false,
+    maxPax: 2,
+    price: 420
+  })
+
+  expect(action).toEqual({
+    type: 'CREATE_ROOM',
+    payload: {
+      _id: expect.any(String),
+      name: 'name',
+      group: 'ungrouped',
+      shared: false,
+      maxPax: 2,
+      price: 420
+    }
+  })
+})
+
 test(`Generate a 'Delete Room' action`, () => {
   const action = deleteRoom('abcd1234')
 

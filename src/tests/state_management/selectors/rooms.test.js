@@ -146,7 +146,7 @@ test('Return default group flags', () => {
       }
     },
     'ungrouped': {
-      open: false,
+      open: true,
       rooms: {
         'Camping': false
       }
