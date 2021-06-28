@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render the 'Create Note' modal 1`] = `
+<styled.form
+  onSubmit={[Function]}
+>
+  <h1>
+    Create Note
+  </h1>
+  <label
+    htmlFor="title"
+  >
+    Title
+  </label>
+  <input
+    id="title"
+  />
+  <textarea
+    id="content"
+  />
+  <button
+    onClick={[Function]}
+    type="button"
+  >
+    Cancel
+  </button>
+  <button
+    type="submit"
+  >
+    Save
+  </button>
+</styled.form>
+`;

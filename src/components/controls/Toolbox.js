@@ -13,7 +13,7 @@ export const Toolbox = props => (
     onMouseEnter={() => props.dispatch(toggleControl('right'))}
     onMouseLeave={() => props.dispatch(toggleControl('right'))}
   >
-  
+    
     {props.open && <button onClick={() => props.dispatch(toggleControlLock('right'))}>Lock</button>}
 
     {props.open && (
@@ -39,6 +39,12 @@ export const Toolbox = props => (
             <button onClick={() => props.dispatch(setModal('removeRoom'))}>Remove Room</button>
             <button onClick={() => props.dispatch(setModal('editRoom'))}>Edit Room</button>
           </div>
+        }
+
+        {props.navigation.notes &&
+        <div>
+          <button onClick={() => props.dispatch(setModal('createNote'))}>Add Note</button>
+        </div>
         }
       </div>
     )}

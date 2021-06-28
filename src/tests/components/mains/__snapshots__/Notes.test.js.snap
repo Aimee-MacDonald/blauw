@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Render default Notes screen 1`] = `
-<h1>
-  Notes
-</h1>
+<div>
+  <h1>
+    Notes
+  </h1>
+</div>
 `;

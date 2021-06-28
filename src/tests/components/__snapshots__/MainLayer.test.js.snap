@@ -16,7 +16,7 @@ exports[`Render Checkout 1`] = `
 
 exports[`Render Notes 1`] = `
 <styled.div>
-  <Notes />
+  <Memo(Connect(Notes)) />
 </styled.div>
 `;
 
