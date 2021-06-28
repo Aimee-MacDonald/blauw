@@ -61,12 +61,21 @@ export const getHoveredRoom = (groups, groupFlags, hoveredCell) => {
   const flatList = []
 
   groups.forEach(group => {
-    flatList.push(group.name)
+    if(group.name !== 'ungrouped') flatList.push(group.name)
 
     group.rooms.forEach(room => {
       flatList.push(room._id)
+
+      if(room.showBeds){
+        for(let i = 0; i < room.maxPax; i++){
+          flatList.push(`${room._id}_${i}`)
+        }
+      }
     })
   })
 
-  console.log(flatList)
+  groupFlags.forEach(group => {
+  })
+  
+  return flatList[hoveredCell - 1]
 }

@@ -15,22 +15,26 @@ export const Room = props => {
       <h3 onClick={props.toggleRoom}>{props.room.name}</h3>
 
       {props.room.showBeds && props.roomFlag &&
-        beds.map((bed, i) => (
-          <StyledBed key={`${props.room._id}_${i}`}>
-            <h3>{bed}</h3>
-          </StyledBed>
-        ))
+        beds.map((bed, i) => {
+          const bedId = `${props.room._id}_${i}`
+
+          return(
+            <StyledBed key={bedId} {...props} bedId={bedId}>
+              <h3>{bed}</h3>
+            </StyledBed>
+          )
+        })
       }
     </StyledRoom>
   )
 }
 
 const StyledRoom = styled.div`
-  background-color: red;
+  background-color: ${props => props.room._id === props.hoveredRoom ? 'cornflowerblue' : 'hotpink'};
 `
 
 const StyledBed = styled.div`
-  background-color: green;
+  background-color: ${props => props.bedId === props.hoveredRoom ? 'cornflowerblue' : "hotpink"};
 `
 
 export default Room

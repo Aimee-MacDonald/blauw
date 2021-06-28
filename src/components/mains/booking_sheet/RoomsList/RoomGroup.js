@@ -22,7 +22,7 @@ export const RoomGroup = props => (
 )
 
 const StyledRoomGroup = styled.div`
-  background-color: blue;
+  background-color: ${props => props.group.name === props.hoveredRoom ? 'cornflowerblue' : 'hotpink'};
 
   h3{
     height: 32px;
