@@ -73,9 +73,10 @@ export const getHoveredRoom = (groups, groupFlags, hoveredCell) => {
       }
     })
   })
-
-  groupFlags.forEach(group => {
-  })
   
   return flatList[hoveredCell - 1]
+}
+
+export const getRoomOptions = rooms => {
+  return rooms.map(room => room.name)
 }

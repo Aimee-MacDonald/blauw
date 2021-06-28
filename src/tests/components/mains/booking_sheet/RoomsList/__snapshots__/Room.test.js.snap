@@ -1,7 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Render a room 1`] = `
-<div>
+<styled.div
+  room={
+    Object {
+      "_id": "abcd1234",
+    }
+  }
+>
   <h3 />
-</div>
+</styled.div>
 `;

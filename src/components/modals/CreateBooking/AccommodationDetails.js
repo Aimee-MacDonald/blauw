@@ -2,6 +2,8 @@ import React, {useState} from 'react'
 import styled from 'styled-components'
 import {connect} from 'react-redux'
 
+import {getRoomOptions} from '../../../state_management/selectors/rooms'
+
 export const AccommodationDetails = props => {
   const [rooms, setRooms] = useState([])
   const [selectedRoom, selectRoom] = useState()
@@ -46,7 +48,7 @@ export const AccommodationDetails = props => {
       {rooms.map(room => (
         <StyledRoomDetails>
           <select>
-            {props.roomOptions.map(roomOption => <option>{roomOption.roomName}</option>)}
+            {props.roomOptions.map(roomOption => <option>{roomOption}</option>)}
           </select>
 
           {room.guests.map(guest => (
@@ -105,6 +107,6 @@ const StyledGuestDetails = styled.div`
   grid-template-columns: repeat(5, 1fr);
 `
 
-const mapStateToProps = ({rooms}) => ({roomOptions: rooms})
+const mapStateToProps = ({rooms}) => ({roomOptions: getRoomOptions(rooms)})
 
 export default connect(mapStateToProps)(AccommodationDetails)

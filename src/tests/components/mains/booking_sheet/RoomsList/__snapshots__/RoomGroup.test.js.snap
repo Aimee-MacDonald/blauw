@@ -1,9 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Render a group of rooms 1`] = `
-<div>
+<styled.div
+  group={
+    Object {
+      "name": "abcd1234",
+    }
+  }
+>
   <h3>
     abcd1234
   </h3>
-</div>
+</styled.div>
 `;
