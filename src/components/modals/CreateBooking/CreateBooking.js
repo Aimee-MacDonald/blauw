@@ -1,30 +1,62 @@
-import React from 'react'
+import React, {useState} from 'react'
 import styled from 'styled-components'
 
 import AccommodationDetails from './AccommodationDetails'
 
-export const CreateBooking = () => (
-  <StyledCreateBooking>
-    <h1>Create Booking</h1>
+export const CreateBooking = () => {
+  const defaultBookingDetails = {
+    bookingName: '',
+    rooms: [],
+    bookingNotes: ''
+  }
 
-    <div id='labeled_booking_name'>
-      <label htmlFor='booking_name'>Booking Name</label>
-      <input id='booking_name'/>
-    </div>
+  const [bookingDetails, setBookingDetails] = useState(defaultBookingDetails)
 
-    <AccommodationDetails/>
+  const editBookingName = e => {
+    setBookingDetails({
+      ...bookingDetails,
+      bookingName: e.target.value
+    })
+  }
 
-    <div id='labeled_notes'>
-      <label htmlFor='notes'>Notes</label>
-      <textarea/>
-    </div>
+  const editBookingNotes = e => {
+    setBookingDetails({
+      ...bookingDetails,
+      bookingNotes: e.target.value
+    })
+  }
 
-    <div id='formControls'>
-      <button>Save</button>
-      <button>Cancel</button>
-    </div>
-  </StyledCreateBooking>
-)
+  return(
+    <StyledCreateBooking>
+      <h1>Create Booking</h1>
+
+      <div id='labeled_booking_name'>
+        <label htmlFor='booking_name'>Booking Name</label>
+        <input
+          id='booking_name'
+          value={bookingDetails.bookingName}
+          onChange={editBookingName}
+        />
+      </div>
+
+      <AccommodationDetails/>
+
+      <div id='labeled_notes'>
+        <label htmlFor='notes'>Notes</label>
+        <textarea
+          id='booking_notes'
+          value={bookingDetails.bookingNotes}
+          onChange={editBookingNotes}
+        />
+      </div>
+
+      <div id='formControls'>
+        <button>Save</button>
+        <button>Cancel</button>
+      </div>
+    </StyledCreateBooking>
+  )
+}
 
 const StyledCreateBooking = styled.form`
   display: grid;
