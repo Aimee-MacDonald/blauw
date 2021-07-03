@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import {connect} from 'react-redux';
+import {connect} from 'react-redux'
+
+import {BsLockFill, BsFillUnlockFill} from 'react-icons/bs'
 
 import {toggleControl, toggleControlLock} from '../../state_management/actions/controls'
 import {setMain} from '../../state_management/actions/navigation'
@@ -10,8 +12,8 @@ export const Navigation = props => (
     onMouseEnter={() => props.dispatch(toggleControl('left'))}
     onMouseLeave={() => props.dispatch(toggleControl('left'))}
   >
-  
-    {props.open && <button onClick={() => props.dispatch(toggleControlLock('left'))}>Lock</button>}
+    
+    {props.open && <button onClick={() => props.dispatch(toggleControlLock('left'))}>{props.locked ? <BsFillUnlockFill/> : <BsLockFill/>}</button>}
     
     {props.open && (
       <div>
@@ -38,7 +40,8 @@ const StyledNavigation = styled.nav`
 `
 
 const mapStateToProps = ({controls}) => ({
-  open: controls.left.open
+  open: controls.left.open,
+  locked: controls.left.locked
 })
 
 export default connect(mapStateToProps)(Navigation)

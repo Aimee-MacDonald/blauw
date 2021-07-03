@@ -2,6 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import {connect} from 'react-redux'
 
+import {BsLockFill, BsFillUnlockFill} from 'react-icons/bs'
+
 import {toggleControl, toggleControlLock} from '../../state_management/actions/controls'
 import {setModal} from '../../state_management/actions/modal'
 import {getMainsFlags} from '../../state_management/selectors/navigation'
@@ -14,7 +16,7 @@ export const Toolbox = props => (
     onMouseLeave={() => props.dispatch(toggleControl('right'))}
   >
     
-    {props.open && <button onClick={() => props.dispatch(toggleControlLock('right'))}>Lock</button>}
+    {props.open && <button onClick={() => props.dispatch(toggleControlLock('right'))}>{props.locked ? <BsFillUnlockFill/> : <BsLockFill/>}</button>}
 
     {props.open && (
       <div>
@@ -66,6 +68,7 @@ const StyledToolbox = styled.nav`
 const mapStateToProps = ({controls, navigation, bookings}) => {
   return{
     open: controls.right.open,
+    locked: controls.right.locked,
     navigation : getMainsFlags(navigation),
     selectedBooking: getSelectedBooking(bookings)
   }
