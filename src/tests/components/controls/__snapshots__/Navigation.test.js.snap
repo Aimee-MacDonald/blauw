@@ -15,6 +15,7 @@ exports[`Render opened Navigation 1`] = `
   open={true}
 >
   <button
+    className="lockButton"
     onClick={[Function]}
   >
     <BsLockFill />

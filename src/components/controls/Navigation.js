@@ -13,7 +13,7 @@ export const Navigation = props => (
     onMouseLeave={() => props.dispatch(toggleControl('left'))}
   >
     
-    {props.open && <button onClick={() => props.dispatch(toggleControlLock('left'))}>{props.locked ? <BsFillUnlockFill/> : <BsLockFill/>}</button>}
+    {props.open && <button className='lockButton' onClick={() => props.dispatch(toggleControlLock('left'))}>{props.locked ? <BsFillUnlockFill/> : <BsLockFill/>}</button>}
     
     {props.open && (
       <div>
@@ -37,6 +37,12 @@ const StyledNavigation = styled.nav`
   border-bottom-right-radius: 0.4rem;
   padding: 1rem;
   box-shadow: ${props => props.open ? '0.2rem 0 1rem 0 #248' : 0};
+
+  .lockButton{
+    background-color: transparent;
+    border: none;
+    float: right;
+  }
 `
 
 const mapStateToProps = ({controls}) => ({

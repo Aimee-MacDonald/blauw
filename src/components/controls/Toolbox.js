@@ -16,7 +16,7 @@ export const Toolbox = props => (
     onMouseLeave={() => props.dispatch(toggleControl('right'))}
   >
     
-    {props.open && <button onClick={() => props.dispatch(toggleControlLock('right'))}>{props.locked ? <BsFillUnlockFill/> : <BsLockFill/>}</button>}
+    {props.open && <button className='lockButton' onClick={() => props.dispatch(toggleControlLock('right'))}>{props.locked ? <BsFillUnlockFill/> : <BsLockFill/>}</button>}
 
     {props.open && (
       <div>
@@ -63,6 +63,12 @@ const StyledToolbox = styled.nav`
   border-bottom-left-radius: 0.4rem;
   padding: 1rem;
   box-shadow: ${props => props.open ? '-0.2rem 0 1rem 0 #248' : 0};
+
+  .lockButton{
+    background-color: transparent;
+    border: none;
+    float: left;
+  }
 `
 
 const mapStateToProps = ({controls, navigation, bookings}) => {

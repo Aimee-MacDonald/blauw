@@ -18,6 +18,7 @@ exports[`Render 'edit rooms list' Toolbox 1`] = `
   selectedBooking={null}
 >
   <button
+    className="lockButton"
     onClick={[Function]}
   >
     <BsLockFill />
@@ -61,6 +62,7 @@ exports[`Render booking sheet Toolbox 1`] = `
   selectedBooking={null}
 >
   <button
+    className="lockButton"
     onClick={[Function]}
   >
     <BsLockFill />
@@ -94,6 +96,7 @@ exports[`Render booking sheet Toolbox with a booking selected 1`] = `
   selectedBooking="abcd1234"
 >
   <button
+    className="lockButton"
     onClick={[Function]}
   >
     <BsLockFill />
