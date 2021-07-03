@@ -17,7 +17,7 @@ exports[`Render opened Navigation 1`] = `
   <button
     onClick={[Function]}
   >
-    Lock
+    <BsLockFill />
   </button>
   <div>
     <button

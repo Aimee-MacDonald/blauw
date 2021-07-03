@@ -20,7 +20,7 @@ exports[`Render 'edit rooms list' Toolbox 1`] = `
   <button
     onClick={[Function]}
   >
-    Lock
+    <BsLockFill />
   </button>
   <div>
     <div>
@@ -63,7 +63,7 @@ exports[`Render booking sheet Toolbox 1`] = `
   <button
     onClick={[Function]}
   >
-    Lock
+    <BsLockFill />
   </button>
   <div>
     <div>
@@ -96,7 +96,7 @@ exports[`Render booking sheet Toolbox with a booking selected 1`] = `
   <button
     onClick={[Function]}
   >
-    Lock
+    <BsLockFill />
   </button>
   <div>
     <div>
