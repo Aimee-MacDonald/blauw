@@ -1,39 +1,30 @@
-import React, {useState} from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import {connect} from 'react-redux'
 
-import {getRoomOptions} from '../../../state_management/selectors/rooms'
+import {getRoomDetails, getRoomOptions} from '../../../state_management/selectors/rooms'
 
 export const AccommodationDetails = props => {
-  const [rooms, setRooms] = useState([])
-  const [selectedRoom, selectRoom] = useState()
-
-  const addRoom = () => {
-    setRooms([
-      ...rooms, {
-      name: `room_${rooms.length}`,
-      guests: []
-    }])
-
-    selectRoom(`room_${rooms.length}`)
+  const setGuestName = (roomIndex, guestIndex, guestName) => {
+    props.editGuestDetails(roomIndex, guestIndex, {
+      ...props.rooms[roomIndex].guests[guestIndex],
+      name: guestName
+    })
   }
 
-  const addGuest = () => {
-    setRooms(rooms.map(room => {
-      if(room.name === selectedRoom){
-        return{
-          ...room,
-          guests: [
-            ...room.guests,
-            {
-              name: ''
-            }
-          ]
-        }
-      } else {
-        return room
-      }
-    }))
+
+  const setGuestArrival = (roomIndex, guestIndex, guestArrival) => {
+    props.editGuestDetails(roomIndex, guestIndex, {
+      ...props.rooms[roomIndex].guests[guestIndex],
+      arrival: guestArrival
+    })
+  }
+
+  const setGuestDeparture = (roomIndex, guestIndex, guestDeparture) => {
+    props.editGuestDetails(roomIndex, guestIndex, {
+      ...props.rooms[roomIndex].guests[guestIndex],
+      departure: guestDeparture
+    })
   }
 
   return(
@@ -45,18 +36,35 @@ export const AccommodationDetails = props => {
       <p>Nights</p>
       <p>Price</p>
 
-      {rooms.map(room => (
-        <StyledRoomDetails>
-          <select>
-            {props.roomOptions.map(roomOption => <option>{roomOption}</option>)}
+      {props.rooms.map(room => (
+        <StyledRoomDetails key={room.index}>
+          <select onChange={e => props.selectRoomOption(e.target.value)}>
+            <option>Select Room</option>
+            {getRoomOptions(props.stateRooms).map(roomOption => (
+              <option key={roomOption._id} value={roomOption._id}>{roomOption.name}</option>
+            ))}
           </select>
 
-          {room.guests.map(guest => (
-            <StyledGuestDetails>
-              <input/>
-              <input type='date'/>
-              <input type='date'/>
-              <input/>
+          {room.guests.map((guest, index) => (
+            <StyledGuestDetails key={`${guest}_${index}`}>
+              <input
+                value={guest.name}
+                onChange={e => setGuestName(room.index, index, e.target.value)}
+              />
+
+              <input
+                type='date'
+                value={guest.arrival}
+                onChange={e => setGuestArrival(room.index, index, e.target.value)}
+              />
+
+              <input
+                type='date'
+                value={guest.departure}
+                onChange={e => setGuestDeparture(room.index, index, e.target.value)}
+              />
+
+              <p>{guest.nights}</p>
               <p>{`R ${guest.price}`}</p>
             </StyledGuestDetails>
           ))}
@@ -64,8 +72,12 @@ export const AccommodationDetails = props => {
       ))}
 
       <div id='addButtons'>
-        <button type='button' onClick={addRoom}>Add Room</button>
-        {selectedRoom && <button type='button' onClick={addGuest}>Add Guest</button>}
+        <button type='button' onClick={props.addRoom}>Add Room</button>
+        {props.selectedRoom &&
+          !!props.rooms[props.selectedRoom - 1].roomId &&
+          props.rooms[props.selectedRoom - 1].guests.length < getRoomDetails(props.rooms[props.selectedRoom - 1].roomId, props.stateRooms).maxPax &&
+          <button type='button' onClick={props.addGuest}>Add Guest</button>
+        }
       </div>
 
       <p id='total'>Total: R</p>
@@ -107,6 +119,6 @@ const StyledGuestDetails = styled.div`
   grid-template-columns: repeat(5, 1fr);
 `
 
-const mapStateToProps = ({rooms}) => ({roomOptions: getRoomOptions(rooms)})
+const mapStateToProps = ({rooms}) => ({stateRooms: rooms})
 
 export default connect(mapStateToProps)(AccommodationDetails)

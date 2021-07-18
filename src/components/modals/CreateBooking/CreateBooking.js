@@ -1,16 +1,24 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import styled from 'styled-components'
+import {connect} from 'react-redux'
+
+import {ServerConnectionContext} from '../../../util/ServerConnection'
+
+import {setModal} from '../../../state_management/actions/modal'
 
 import AccommodationDetails from './AccommodationDetails'
 
-export const CreateBooking = () => {
+export const CreateBooking = props => {
   const defaultBookingDetails = {
     bookingName: '',
     rooms: [],
     bookingNotes: ''
   }
 
+  const server = useContext(ServerConnectionContext)
+
   const [bookingDetails, setBookingDetails] = useState(defaultBookingDetails)
+  const [selectedRoom, selectRoom] = useState(0)
 
   const editBookingName = e => {
     setBookingDetails({
@@ -26,8 +34,84 @@ export const CreateBooking = () => {
     })
   }
 
+  const addRoom = () => {
+    setBookingDetails({
+      ...bookingDetails,
+      rooms: [
+        ...bookingDetails.rooms,
+        {
+          index: bookingDetails.rooms.length,
+          roomId: undefined,
+          guests: []
+        }
+      ]
+    })
+
+    selectRoom(bookingDetails.rooms.length + 1)
+  }
+
+  const selectRoomOption = roomId => {
+    setBookingDetails({
+      ...bookingDetails,
+      rooms: bookingDetails.rooms.map(room => {
+        return room.index !== selectedRoom - 1 ? room : {
+          ...room,
+          roomId
+        }
+      })
+    })
+  }
+
+  const addGuest = () => {
+    setBookingDetails({
+      ...bookingDetails,
+      rooms: bookingDetails.rooms.map(room => {
+        return room.index !== selectedRoom - 1 ? room : {
+          ...room,
+          guests: [
+            ...room.guests,
+            {
+              name: '',
+              arrival: '',
+              departure: '',
+              nights: 0
+            }
+          ]
+        }
+      })
+    })
+  }
+
+  const editGuestDetails = (roomIndex, guestIndex, guestDetails) => {
+    setBookingDetails({
+      ...bookingDetails,
+      rooms: bookingDetails.rooms.map(room => {
+        return room.index !== roomIndex ? room : {
+          ...room,
+          guests: room.guests.map((guest, index) => {
+            return index !== guestIndex ? guest : {
+              ...guest,
+              ...guestDetails
+            }
+          })
+        }
+      })
+    })
+  }
+
+  const saveBooking = e => {
+    e.preventDefault()
+
+    console.log('Save Booking')
+    console.log(bookingDetails)
+
+    //server.dispatch()
+
+    props.dispatch(setModal())
+  }
+
   return(
-    <StyledCreateBooking>
+    <StyledCreateBooking onSubmit={saveBooking}>
       <h1>Create Booking</h1>
 
       <div id='labeled_booking_name'>
@@ -39,7 +123,15 @@ export const CreateBooking = () => {
         />
       </div>
 
-      <AccommodationDetails/>
+      <AccommodationDetails
+        addRoom={addRoom}
+        addGuest={addGuest}
+        rooms={bookingDetails.rooms}
+        selectedRoom={selectedRoom}
+        selectRoom={selectRoom}
+        selectRoomOption={selectRoomOption}
+        editGuestDetails={editGuestDetails}
+      />
 
       <div id='labeled_notes'>
         <label htmlFor='notes'>Notes</label>
@@ -51,8 +143,8 @@ export const CreateBooking = () => {
       </div>
 
       <div id='formControls'>
-        <button>Save</button>
-        <button>Cancel</button>
+        <button type='reset' onClick={() => props.dispatch(setModal())}>Cancel</button>
+        <button type='submit'>Save</button>
       </div>
     </StyledCreateBooking>
   )
@@ -93,4 +185,4 @@ const StyledCreateBooking = styled.form`
   }
 `
 
-export default CreateBooking
+export default connect()(CreateBooking)

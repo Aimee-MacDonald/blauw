@@ -78,5 +78,9 @@ export const getHoveredRoom = (groups, groupFlags, hoveredCell) => {
 }
 
 export const getRoomOptions = rooms => {
-  return rooms.map(room => room.name)
+  return rooms.map(room => ({_id: room._id, name: room.name}))
+}
+
+export const getRoomDetails = (roomId, rooms) => {
+  return rooms.filter(room => room._id === roomId)[0]
 }
