@@ -36,7 +36,7 @@ export const AccommodationDetails = props => {
       <p>Nights</p>
       <p>Price</p>
 
-      {props.rooms.map(room => (
+      {props.rooms && props.rooms.map(room => (
         <StyledRoomDetails key={room.index}>
           <select onChange={e => props.selectRoomOption(e.target.value)}>
             <option>Select Room</option>

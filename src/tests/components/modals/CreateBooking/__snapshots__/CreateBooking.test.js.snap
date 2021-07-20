@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Render default 'Create Booking' modal 1`] = `
-<styled.form>
+<styled.form
+  onSubmit={[Function]}
+>
   <h1>
     Create Booking
   </h1>
@@ -19,7 +21,15 @@ exports[`Render default 'Create Booking' modal 1`] = `
       value=""
     />
   </div>
-  <Memo(Connect(AccommodationDetails)) />
+  <Memo(Connect(AccommodationDetails))
+    addGuest={[Function]}
+    addRoom={[Function]}
+    editGuestDetails={[Function]}
+    rooms={Array []}
+    selectRoom={[Function]}
+    selectRoomOption={[Function]}
+    selectedRoom={0}
+  />
   <div
     id="labeled_notes"
   >
@@ -37,11 +47,16 @@ exports[`Render default 'Create Booking' modal 1`] = `
   <div
     id="formControls"
   >
-    <button>
-      Save
-    </button>
-    <button>
+    <button
+      onClick={[Function]}
+      type="reset"
+    >
       Cancel
+    </button>
+    <button
+      type="submit"
+    >
+      Save
     </button>
   </div>
 </styled.form>
