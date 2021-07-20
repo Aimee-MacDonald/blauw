@@ -12,7 +12,6 @@ export const AccommodationDetails = props => {
     })
   }
 
-
   const setGuestArrival = (roomIndex, guestIndex, guestArrival) => {
     props.editGuestDetails(roomIndex, guestIndex, {
       ...props.rooms[roomIndex].guests[guestIndex],
@@ -39,7 +38,7 @@ export const AccommodationDetails = props => {
       {props.rooms && props.rooms.map(room => (
         <StyledRoomDetails key={room.index}>
           <select onChange={e => props.selectRoomOption(e.target.value)}>
-            <option>Select Room</option>
+            {!props.rooms[props.selectedRoom - 1].roomId && <option>Select Room</option>}
             {getRoomOptions(props.stateRooms).map(roomOption => (
               <option key={roomOption._id} value={roomOption._id}>{roomOption.name}</option>
             ))}
@@ -73,8 +72,8 @@ export const AccommodationDetails = props => {
 
       <div id='addButtons'>
         <button type='button' onClick={props.addRoom}>Add Room</button>
-        {props.selectedRoom &&
-          !!props.rooms[props.selectedRoom - 1].roomId &&
+        {!!props.selectedRoom &&
+          props.rooms[props.selectedRoom - 1].roomId &&
           props.rooms[props.selectedRoom - 1].guests.length < getRoomDetails(props.rooms[props.selectedRoom - 1].roomId, props.stateRooms).maxPax &&
           <button type='button' onClick={props.addGuest}>Add Guest</button>
         }
