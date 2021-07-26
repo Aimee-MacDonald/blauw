@@ -84,3 +84,7 @@ export const getRoomOptions = rooms => {
 export const getRoomDetails = (roomId, rooms) => {
   return rooms.filter(room => room._id === roomId)[0]
 }
+
+export const getRoomIndex = (roomId, rooms) => {
+  return rooms.findIndex(room => room._id === roomId) + 1
+}

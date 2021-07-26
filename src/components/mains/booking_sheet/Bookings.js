@@ -4,24 +4,30 @@ import {connect} from 'react-redux'
 
 import {selectBooking} from '../../../state_management/actions/bookings'
 import {shortenText} from '../../../util/util'
+import {getRoomIndex} from '../../../state_management/selectors/rooms'
 
 export const Bookings = props => (
   <StyledBookings
     id={'booking_sheet'}
     onScroll={e => props.setScrollOffsets({x: e.target.scrollLeft, y: e.target.scrollTop})}
-    onClick={e => {if(e.target.id === 'booking_sheet')props.dispatch(selectBooking())}}>
-
+    onClick={e => {if(e.target.id === 'booking_sheet') props.dispatch(selectBooking())}}
+  >
     {props.bookings.bookings.map(booking => (
-      <StyledBooking
-        key={booking._id}
-        dateIndex={(booking.checkin_date - props.dates.startDate) / 86400000 + 1}
-        roomIndex={booking.room + 1}
-        nights={booking.nights}
-        onClick={() => props.dispatch(selectBooking(booking._id))}
-        selected={props.bookings.selectedBooking === booking._id}
-      >
-        {shortenText(booking.booking_name, booking.nights * 8)}
-      </StyledBooking>
+      booking.rooms.map(room => (
+        <StyledBooking
+          key={booking._id}
+          dateIndex={(room.guests[0].arrival - props.dates.startDate) / 86400000 + 1}
+          roomIndex={getRoomIndex(room.roomId, props.rooms)}
+          nights={4}
+          onClick={() => props.dispatch(selectBooking(booking._id))}
+          selected={props.bookings.selectedBooking === booking._id}
+        >
+          {
+            //shortenText(booking.booking_name, booking.nights * 8)
+            booking.bookingName
+          }
+        </StyledBooking>
+      ))
     ))}
   </StyledBookings>
 )
@@ -51,5 +57,5 @@ const StyledBooking = styled.div`
   cursor: pointer;
 `
 
-const mapStateToProps = ({bookings, dates}) => ({bookings, dates})
+const mapStateToProps = ({bookings, dates, rooms}) => ({bookings, dates, rooms})
 export default connect(mapStateToProps)(Bookings)

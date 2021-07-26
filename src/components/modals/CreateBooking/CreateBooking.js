@@ -3,8 +3,10 @@ import styled from 'styled-components'
 import {connect} from 'react-redux'
 
 import {ServerConnectionContext} from '../../../util/ServerConnection'
+import {normaliseDate} from '../../../util/util'
 
 import {setModal} from '../../../state_management/actions/modal'
+import {createBooking} from '../../../state_management/actions/bookings'
 
 import AccommodationDetails from './AccommodationDetails'
 
@@ -72,8 +74,8 @@ export const CreateBooking = props => {
             ...room.guests,
             {
               name: '',
-              arrival: '',
-              departure: '',
+              arrival: normaliseDate(new Date()),
+              departure: normaliseDate(new Date()),
               nights: 0
             }
           ]
@@ -102,8 +104,7 @@ export const CreateBooking = props => {
   const saveBooking = e => {
     e.preventDefault()
 
-    console.log('Save Booking')
-    console.log(bookingDetails)
+    props.dispatch(createBooking(bookingDetails))
 
     //server.dispatch()
 

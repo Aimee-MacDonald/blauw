@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import {connect} from 'react-redux'
 
 import {getRoomDetails, getRoomOptions} from '../../../state_management/selectors/rooms'
+import {formatDateForInput, normaliseDate} from '../../../util/util'
 
 export const AccommodationDetails = props => {
   const setGuestName = (roomIndex, guestIndex, guestName) => {
@@ -53,14 +54,14 @@ export const AccommodationDetails = props => {
 
               <input
                 type='date'
-                value={guest.arrival}
-                onChange={e => setGuestArrival(room.index, index, e.target.value)}
+                value={formatDateForInput(guest.arrival)}
+                onChange={e => setGuestArrival(room.index, index, normaliseDate(e.target.value))}
               />
 
               <input
                 type='date'
-                value={guest.departure}
-                onChange={e => setGuestDeparture(room.index, index, e.target.value)}
+                value={formatDateForInput(guest.departure)}
+                onChange={e => setGuestDeparture(room.index, index, normaliseDate(e.target.value))}
               />
 
               <p>{guest.nights}</p>
