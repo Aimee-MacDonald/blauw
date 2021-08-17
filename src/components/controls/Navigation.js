@@ -16,7 +16,7 @@ export const Navigation = props => (
     {props.open && <button className='lockButton' onClick={() => props.dispatch(toggleControlLock('left'))}>{props.locked ? <BsFillUnlockFill/> : <BsLockFill/>}</button>}
     
     {props.open && (
-      <div>
+      <div id='buttons'>
         <button onClick={() => props.dispatch(setMain('bookingSheet'))}>Booking Sheet</button>
         <button onClick={() => props.dispatch(setMain('checkout'))}>Checkout</button>
         <button onClick={() => props.dispatch(setMain('stock'))}>Stock</button>
@@ -42,6 +42,18 @@ const StyledNavigation = styled.nav`
     background-color: transparent;
     border: none;
     float: right;
+  }
+
+  #buttons{
+    display: flex;
+    flex-flow: nowrap column;
+    margin-top: 1.6rem;
+  }
+
+  #buttons button{
+    padding: 0.4rem;
+    margin-bottom: 0.4rem;
+    cursor: pointer;
   }
 `
 
