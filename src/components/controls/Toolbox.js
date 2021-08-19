@@ -18,38 +18,40 @@ export const Toolbox = props => (
     
     {props.open && <button className='lockButton' onClick={() => props.dispatch(toggleControlLock('right'))}>{props.locked ? <BsFillUnlockFill/> : <BsLockFill/>}</button>}
 
-    {props.open && (
-      <div>
-        {props.navigation.bookingSheet && (
-          <div>
-            <button onClick={() => props.dispatch(setModal('createBooking'))}>Create Booking</button>
-            {props.selectedBooking && (
-              <div>
-                <button onClick={() => props.dispatch(setModal('deleteBooking'))}>Delete Booking</button>
-                <button onClick={() => props.dispatch(setModal('editBooking'))}>Edit Booking</button>
-                {isToday(props.selectedBooking.checkin_date) && !props.selectedBooking.checked_in && props.selectedBooking.status === 'confirmed' && <button onClick={() => props.dispatch(setModal('checkin'))}>Check In</button>}
-                {props.selectedBooking.checked_in && <button onClick={() => props.dispatch(setModal('checkout'))}>Check Out</button>}
-                {props.selectedBooking.status === 'checked_out' && <button onClick={() => props.dispatch(setModal('undoCheckout'))}>Undo Check Out</button>}
-              </div>
-            )}
-          </div>
-        )}
-
-        {props.navigation.editRoomsList &&
-          <div>
-            <button onClick={() => props.dispatch(setModal('createRoom'))}>Add Room</button>
-            <button onClick={() => props.dispatch(setModal('removeRoom'))}>Remove Room</button>
-            <button onClick={() => props.dispatch(setModal('editRoom'))}>Edit Room</button>
-          </div>
-        }
-
-        {props.navigation.notes &&
+    <div id='buttons'>
+      {props.open && (
         <div>
-          <button onClick={() => props.dispatch(setModal('createNote'))}>Add Note</button>
+          {props.navigation.bookingSheet && (
+            <div>
+              <button onClick={() => props.dispatch(setModal('createBooking'))}>Create Booking</button>
+              {props.selectedBooking && (
+                <div>
+                  <button onClick={() => props.dispatch(setModal('deleteBooking'))}>Delete Booking</button>
+                  <button onClick={() => props.dispatch(setModal('editBooking'))}>Edit Booking</button>
+                  {isToday(props.selectedBooking.checkin_date) && !props.selectedBooking.checked_in && props.selectedBooking.status === 'confirmed' && <button onClick={() => props.dispatch(setModal('checkin'))}>Check In</button>}
+                  {props.selectedBooking.checked_in && <button onClick={() => props.dispatch(setModal('checkout'))}>Check Out</button>}
+                  {props.selectedBooking.status === 'checked_out' && <button onClick={() => props.dispatch(setModal('undoCheckout'))}>Undo Check Out</button>}
+                </div>
+              )}
+            </div>
+          )}
+
+          {props.navigation.editRoomsList &&
+            <div>
+              <button onClick={() => props.dispatch(setModal('createRoom'))}>Add Room</button>
+              <button onClick={() => props.dispatch(setModal('removeRoom'))}>Remove Room</button>
+              <button onClick={() => props.dispatch(setModal('editRoom'))}>Edit Room</button>
+            </div>
+          }
+
+          {props.navigation.notes &&
+          <div>
+            <button onClick={() => props.dispatch(setModal('createNote'))}>Add Note</button>
+          </div>
+          }
         </div>
-        }
-      </div>
-    )}
+      )}
+    </div>
   </StyledToolbox>
 )
 
@@ -68,6 +70,19 @@ const StyledToolbox = styled.nav`
     background-color: transparent;
     border: none;
     float: left;
+  }
+
+  #buttons{
+    display: flex;
+    flex-flow: nowrap column;
+    margin-top: 1.6rem;
+  }
+
+  #buttons button{
+    padding: 0.4rem;
+    margin-bottom: 0.4rem;
+    cursor: pointer;
+    width: 100%;
   }
 `
 
